@@ -7,4 +7,15 @@ let getAlluser = (userId) => {
   // return axios.get("/api/get_All_user?id=" + userId, { id: userId });
   return axios.get(`/api/get_All_user?id=${userId}`, { id: userId });
 };
-export { handleLoginApi, getAlluser };
+let createNewUserService = (data) => {
+  return axios.post("/api/create_One_user", data);
+}
+let deleteUserService = (userId) => {
+  return axios.get(`/api/delete_One_user?id=${userId}`, {
+    id: userId
+  });
+}
+let updateUserService = (data) => {
+  return axios.post("/api/update_One_user", data);
+}
+export { handleLoginApi, getAlluser, createNewUserService, deleteUserService, updateUserService };

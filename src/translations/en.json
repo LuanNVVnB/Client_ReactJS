@@ -1,4 +1,10 @@
-{
+{  
+    "homeheader":{
+        "speciality": "Medical specitality",
+        "health-facilities":"health-facilities",
+        "doctor":"doctor",
+        "call-speciality":"call-speciality"
+    },
     "common": {
         "add": "Add",
         "edit": "Edit",

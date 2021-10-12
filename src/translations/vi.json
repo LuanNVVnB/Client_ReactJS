@@ -1,4 +1,11 @@
-{
+ {   "homeheader":{
+        "speciality": "CHUYÊN KHOA KHÁM BỆNH",
+        "health-facilities":"CƠ SỞ Y TẾ",
+        "doctor":"BÁC SĨ",
+        "call-speciality":"GỌI KHÁM"
+
+
+    },
     "common": {
         "add": "Thêm",
         "edit": "Sửa",
