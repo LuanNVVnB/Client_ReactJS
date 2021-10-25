@@ -38,11 +38,21 @@
             "system-administrator": {
                 "header": "Quản trị hệ thống",
                 "user-manage": "Quản lý người sử dụng",
-                "product-manage": "Quản lý gói",
+                "redux-manage": "Quản lý redux",
                 "register-package-group-or-account": "Đăng ký gói dịch vụ cho nhóm/tài khoản"
             },
             "system-parameter": {
                 "header": "Tham số hệ thống"
+            },
+            "menu-admin":{
+                "user-management":"Quản lý người dùng",
+                "specialized-management":"Quản lý chuyên khoa",
+                "booking-management":"Quản lý đặt lịch",
+                "clinic-management":"Quản lý phòng khám",
+                "medical-facility-management":"Quản lý cơ sở y tế",
+                "doctor-management":"Quản lý danh sách bác sĩ",
+                "patient-management":"Quản lý danh sách bệnh nhân"
+
             }
         }
     },
@@ -122,6 +132,25 @@
             "remove-assign-success": "Bỏ gán gói dịch vụ cho khách hàng thành công",
             "remove-assign-fail": "Bỏ gán gói dịch vụ cho khách hàng thất bại",
             "sure-delete-assign": "Bạn có chắc chắn muốn bỏ gán gói dịch vụ cho khách hàng?"
+        },
+        "welcome":"Xin chào",
+        "user-redux":{
+            
+            "email":"Email",
+            "password":"Mật khẩu",
+            "first-name":"Tên",
+            "last-name":"Họ",
+            "phone-number":"Số điện thoại",
+            "address":"Địa chỉ",
+            "gender":"Giới tính",
+            "rodeId":"Chức vụ",
+            "positionId":"Vị trí",
+            "male":"Nam",
+            "fmale":"Nữ",
+            "doctor":"Bác Sĩ",
+            "patient":"Bệnh Nhân",
+            "avatar":"Ảnh đại diện"
+
         }
     }
 }

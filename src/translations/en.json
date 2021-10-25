@@ -37,11 +37,21 @@
             "system-administrator": {
                 "header": "System Administrator",
                 "user-manage": "User manage",
-                "product-manage": "Package manage",
+                "redux-manage": "Redux manage",
                 "register-package-group-or-account": "Register service package for group/account"
             },
             "system-parameter": {
                 "header": "System-parameter"
+            },
+            "menu-admin":{
+                "user-management":"User management",
+                "specialized-management":"Specialized management",
+                "booking-management":"Booking management",
+                "clinic-management":"Clinic management",
+                "medical-facility-management":"Medical facility management",
+                "doctor-management":"Doctor management",
+                "patient-management":"Patient management"
+
             }
         }
     },
@@ -121,6 +131,26 @@
             "remove-assign-success": "Unassign service package to customer successfully",
             "remove-assign-fail": "Fail to unassign service package to customer",
             "sure-delete-assign": "Are you sure to unassign service package to customer?"
+        },
+        "welcome": "Welcome",
+        "user-redux":{
+            "email":"Email",
+            "password":"Password",
+            "first-name":"First Name",
+            "last-name":"Last Name",
+            "phone-number":"Phone Number",
+            "address":"Address",
+            "gender":"Gender",
+            "rodeId":"Role",
+            "positionId":"Position",
+            "male":"Male",
+            "fmale":"Fmale",
+            "doctor":"Doctor",
+            "patient":"Patient",
+            "avatar":"Avatar"
+
         }
+
+        
     }
 }

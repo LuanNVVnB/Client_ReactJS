@@ -9,8 +9,46 @@
   height: 40px;
   position: relative;
   margin-bottom: 50px;
+  .header-welcome{
+    display: flex;
+    .welcome{
+      display: flex;
+      align-items: center;
+      .title-welcome{
+        padding-right: 10px;
+      }
+      .user-welcome{
+        padding-right: 10px;
+        &::after{
+          content: "!";
+          
+        }
+      }
 
-  .btn-logout {
+    }
+    .header-login {
+      width: 100px;
+      right: 10px;
+      display: flex;
+      align-items: center;
+      padding-left: 10px;
+       span {
+         padding: 5px;
+         margin-right: 5px;
+         &:hover {
+           color: red;
+         }
+         &.active{
+           background-color: #0F00FF;
+           color: white;
+           border-radius: 10px 0 10px 10px ;
+           padding: 5px 10px 5px 10px;
+         }
+         
+       }
+
+   }
+   .btn-logout {
     color: $common-text-color;
     line-height: 40px;
     height: 40px;
@@ -22,4 +60,10 @@
       font-size: $base-size + 1px;
     }
   }
+  
+    
+  
+  }
+
+ 
 }

@@ -18,4 +18,7 @@ let deleteUserService = (userId) => {
 let updateUserService = (data) => {
   return axios.post("/api/update_One_user", data);
 }
-export { handleLoginApi, getAlluser, createNewUserService, deleteUserService, updateUserService };
+let getAllcodeService = (datatype) => {
+  return axios.get(`/api/allcode?type=${datatype}`, { type: datatype });
+}
+export { handleLoginApi, getAlluser, createNewUserService, deleteUserService, updateUserService, getAllcodeService };

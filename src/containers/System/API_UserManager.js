@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { FormattedMessage } from "react-intl";
 import { connect } from "react-redux";
 import { getAlluser, createNewUserService, deleteUserService, updateUserService } from "../../services/userService";
-import UserModel from "./UserModel";
-import UserModelUpdate from "./UserModelUpdate";
-class UserManage extends Component {
+import API_UserModel from "./API_UserModel";
+import API_UserModelUpdate from "./API_UserModelUpdate";
+class API_UserManager extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -69,7 +69,7 @@ class UserManage extends Component {
     }
 
   }
-  handeleUpdate = (userupdate) => {
+  handeleUpdateService = (userupdate) => {
     this.setState({
       userUpdate: userupdate.item,
       isOpenUpdateModal: true,
@@ -116,14 +116,14 @@ class UserManage extends Component {
 
     return (
       <div className="text-center">
-        <UserModel
+        <API_UserModel
           createNewUser={this.createNewUser}
           isOpen={this.state.isOpenModal}
           toggleModal={this.toggleModal}
         />
         {
           this.state.isOpenUpdateModal &&
-          <UserModelUpdate
+          <API_UserModelUpdate
             UserUpdate={this.state.userUpdate}
             isOpen={this.state.isOpenUpdateModal}
             // isOpen={true}
@@ -163,10 +163,10 @@ class UserManage extends Component {
                     <td>{item.firstName}</td>
                     <td>{item.lastName}</td>
                     <td>{item.address}</td>
-                    <td>{item.gender ? "M" : "F"}</td>
+                    <td>{item.gender}</td>
                     <td>
-                      <button onClick={() => { this.handeleUpdate({ item }) }}>Edit</button>
-                      <button onClick={() => { this.handeleDelete({ item }) }} >Delete</button>
+                      <button onClick={() => { this.handeleUpdateService({ item }) }}>Edit</button>
+                      <button onClick={() => { this.handeleDeleteService({ item }) }} >Delete</button>
                     </td>
                   </tr>
                 );
@@ -186,4 +186,4 @@ const mapDispatchToProps = (dispatch) => {
   return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserManage);
+export default connect(mapStateToProps, mapDispatchToProps)(API_UserManager);

@@ -1,0 +1,43 @@
+.specialty-item1{
+    position: relative;;
+    
+    width: 80%;
+    margin: 20px 10% 20px 10%;
+
+    .slick-item{
+        
+        width: 200px;
+        img{
+            width: 200px;
+            height: 120px;
+            object-fit: cover;
+    
+        }
+       
+    }
+
+}
+.slick-prev{
+    position: relative !important;
+    top:50% !important;
+    border:1px solid green  !important;
+    position: relative !important;
+    left: 0 !important;
+
+}
+.slick-next::before, .slick-prev::before{
+   
+    color: black !important;
+}
+.slick-next{
+    border:1px solid green  !important;
+    position: relative !important;
+    right: 0 !important;
+
+}
+
+
+
+
+
+
