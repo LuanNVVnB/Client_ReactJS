@@ -1,9 +1,27 @@
 {  
     "homeheader":{
-        "speciality": "Medical specitality",
-        "health-facilities":"health-facilities",
-        "doctor":"doctor",
-        "call-speciality":"call-speciality"
+        "speciality": "Medical Specitality",
+        "health-facilities":"Health Facilities",
+        "doctor":"Doctor",
+        "call-speciality":"Call Speciality",
+        "support":"Support"
+       
+
+    },
+    "center":{
+        "descriptionname1":"Find local specialists who can take your insurance",
+        "descriptionname2":"we can help you find available vaccine appointments near you or notify you when availability opens up.",
+        "fastest":"FESTEST SOLUTION",
+        "easy-steps":"4 easy steps to get your solution",
+        "search":"Search Doctor",
+        "check":"Check Doctor Profile",
+        "schedule":"Schedule Appointment",
+        "get-solution":"Get Your Solution",
+        "search-contant":" we're here to help whenever you feel ill,but keeping you healthy is our better priority.",
+        "check-contant":"we're here to help you find avaliable vaccine appointments near you or notify you when availability.",
+        "schedule-contant":" From seasional allergies to bum identification and treatments. we have the rescources.",
+        "get-solution-contant":" we're can help you find availible vaccine appointments near you or notify you when availability."
+        
     },
     "common": {
         "add": "Add",
@@ -147,7 +165,9 @@
             "fmale":"Fmale",
             "doctor":"Doctor",
             "patient":"Patient",
-            "avatar":"Avatar"
+            "avatar":"Avatar",
+            "saveUser":"Save User",
+            "updateUser":"Save Change User"
 
         }
 

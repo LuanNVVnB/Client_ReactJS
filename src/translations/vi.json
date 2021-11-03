@@ -2,9 +2,25 @@
         "speciality": "CHUYÊN KHOA KHÁM BỆNH",
         "health-facilities":"CƠ SỞ Y TẾ",
         "doctor":"BÁC SĨ",
-        "call-speciality":"GỌI KHÁM"
+        "call-speciality":"GỌI KHÁM",
+        "support":"Hỗ trợ"
+        
 
 
+    },
+    "center":{
+        "descriptionname1":"Tìm các chuyên gia địa phương có thể nhận bảo hiểm của bạn",
+        "descriptionname2":"chúng tôi có thể giúp bạn tìm các cuộc hẹn tiêm vắc-xin có sẵn gần bạn hoặc thông báo cho bạn khi có sẵn phòng.",
+        "fastest":"GIẢI PHÁP NHANH NHẤT",
+        "easy-steps":"4 bước đơn giản để có được giải pháp của bạn",
+        "search":"Tìm Kiếm Bác Sĩ",
+        "check":"Kiểm Tra Hồ Sơ Bác Sĩ",
+        "schedule":"Lịch Hẹn",
+        "get-solution":"Nhận Giải Pháp Của Bạn",
+        "search-contant":"Chúng tôi ở đây để giúp đỡ bất cứ khi nào bạn cảm thấy ốm, nhưng giữ cho bạn khỏe mạnh là ưu tiên hàng đầu của chúng tôi.",
+        "check-contant":"Chúng tôi ở đây để giúp bạn tìm các cuộc hẹn tiêm vắc xin hiện có gần bạn hoặc thông báo cho bạn khi có sẵn.",
+        "schedule-contant":"Từ dị ứng theo mùa đến nhận biết và điều trị ăn mày. chúng tôi có các nguồn. ",
+        "get-solution-contant":"chúng tôi có thể giúp bạn tìm các cuộc hẹn tiêm vắc-xin còn hiệu lực ở gần bạn hoặc thông báo cho bạn khi có sẵn."
     },
     "common": {
         "add": "Thêm",
@@ -149,7 +165,9 @@
             "fmale":"Nữ",
             "doctor":"Bác Sĩ",
             "patient":"Bệnh Nhân",
-            "avatar":"Ảnh đại diện"
+            "avatar":"Ảnh đại diện",
+            "saveUser":"Lưu Người Dùng",
+            "updateUser":"Lưu Thay Đổi"
 
         }
     }

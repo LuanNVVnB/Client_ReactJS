@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import "./CenterFind.scss";
+import { FormattedMessage } from "react-intl";
 import * as actions from "../../../store/actions";
 
 class CenterFind extends Component {
@@ -10,10 +11,11 @@ class CenterFind extends Component {
         <div className="CenterFind">
           <div className="Center-description">
             <div className=" description-name">
-              <h2>Find local specialists who can take your insurance</h2>
+              <h2>
+                <FormattedMessage id={"center.descriptionname1"} />
+              </h2>
               <h5>
-                we can help you find available vaccine appointments near you or
-                notify you when availability opens up.
+                <FormattedMessage id={"center.descriptionname2"} />
               </h5>
             </div>
             <input
@@ -33,48 +35,55 @@ class CenterFind extends Component {
           </div>
         </div>
         <div className="Fastest">
-          <div className="fastname_min">FASTETST SOLUTION</div>
-          <div className="fastname_max">4 easy steps to get your solution</div>
+          <div className="fastname_min">
+            <FormattedMessage id={"center.fastest"} />
+          </div>
+          <div className="fastname_max">
+            <FormattedMessage id={"center.easy-steps"} />
+          </div>
           <div className="Fastest-item">
             <div className="item">
               <div className="icon">
                 <i class="fas fa-user"></i>
               </div>
-              <div className="name-item">Search doctor</div>
+              <div className="name-item">
+                <FormattedMessage id={"center.search"} />
+              </div>
               <div className="containt-item">
-                we're here to help whenever you feel ill,but keeping you healthy
-                is our better priority.
+                <FormattedMessage id={"center.search-contant"} />
               </div>
             </div>
             <div className="item">
               <div className="icon">
                 <i class="fas fa-user"></i>
-
               </div>
-              <div className="name-item">Check doctor Profile</div>
+              <div className="name-item">
+                <FormattedMessage id={"center.check"} />
+              </div>
               <div className="containt-item">
-                we're here to help you find avaliable vaccine appointments near you
-                or notify you when availability.
+                <FormattedMessage id={"center.check-contant"} />
               </div>
             </div>
             <div className="item">
               <div className="icon">
                 <i class="far fa-calendar-alt"></i>
               </div>
-              <div className="name-item">Schedule Appointment</div>
+              <div className="name-item">
+                <FormattedMessage id={"center.schedule"} />
+              </div>
               <div className="containt-item">
-                From seasional allergies to bum identification and
-                treatments. we have the rescources.
+                <FormattedMessage id={"center.schedule-contant"} />
               </div>
             </div>
             <div className="item">
               <div className="icon">
                 <i class="far fa-lightbulb"></i>
               </div>
-              <div className="name-item">Get your solution</div>
+              <div className="name-item">
+                <FormattedMessage id={"center.get-solution"} />
+              </div>
               <div className="containt-item">
-                we're can help you find availible vaccine appointments near
-                you or notify you when availability.
+                <FormattedMessage id={"center.get-solution-contant"} />
               </div>
             </div>
           </div>

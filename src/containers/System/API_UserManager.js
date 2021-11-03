@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import { FormattedMessage } from "react-intl";
 import { connect } from "react-redux";
-import { getAlluser, createNewUserService, deleteUserService, updateUserService } from "../../services/userService";
+import {
+  getAlluser,
+  createNewUserService,
+  deleteUserService,
+  updateUserService,
+} from "../../services/userService";
 import API_UserModel from "./API_UserModel";
 import API_UserModelUpdate from "./API_UserModelUpdate";
 class API_UserManager extends Component {
@@ -11,7 +16,7 @@ class API_UserManager extends Component {
       arrUsers: [],
       isOpenModal: false,
       userUpdate: {},
-      isOpenUpdateModal: false
+      isOpenUpdateModal: false,
     };
   }
   handleAddnewuser = () => {
@@ -30,10 +35,8 @@ class API_UserManager extends Component {
     });
   };
 
-
   async componentDidMount() {
     await this.getAllUserService();
-
   }
   getAllUserService = async () => {
     let response = await getAlluser("All");
@@ -47,9 +50,8 @@ class API_UserManager extends Component {
       //   );
       //   console.log("check two ", this.state.arrUsers);
     }
-  }
+  };
   createNewUser = async (data) => {
-
     try {
       let response = await createNewUserService(data);
       // console.log("check :", response);
@@ -57,28 +59,21 @@ class API_UserManager extends Component {
       if (response && response.users.errcode !== 0) {
         // alert(response.message);
         alert(response.users.message);
-
       } else {
         alert("All new user succesful");
         await this.getAllUserService();
-
       }
-
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
-
-  }
+  };
   handeleUpdateService = (userupdate) => {
     this.setState({
       userUpdate: userupdate.item,
       isOpenUpdateModal: true,
-    })
-
-
-  }
+    });
+  };
   handeleDeleteService = async (userdelete) => {
-
     try {
       console.log("id: ", userdelete.item.id);
       let response = await deleteUserService(userdelete.item.id);
@@ -87,29 +82,25 @@ class API_UserManager extends Component {
       if (response && response.deleteuser.errcode !== 0) {
         // alert(response.message);
         alert(response.deleteuser.message);
-
       } else {
-        alert("delete user succesfull")
+        alert("delete user succesfull");
         await this.getAllUserService();
       }
-
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
-
-  }
+  };
 
   handleUpdateOneUser = async (user) => {
     let response = await updateUserService(user);
     console.log("update: ", response);
     if (response && response.updateuser.errcode !== 0) {
       alert(response.updateuser.message);
-
     } else {
       alert("update user succesfull");
       await this.getAllUserService();
     }
-  }
+  };
 
   render() {
     let arrUsers = this.state.arrUsers;
@@ -121,8 +112,7 @@ class API_UserManager extends Component {
           isOpen={this.state.isOpenModal}
           toggleModal={this.toggleModal}
         />
-        {
-          this.state.isOpenUpdateModal &&
+        {this.state.isOpenUpdateModal && (
           <API_UserModelUpdate
             UserUpdate={this.state.userUpdate}
             isOpen={this.state.isOpenUpdateModal}
@@ -130,7 +120,7 @@ class API_UserManager extends Component {
             toggleModal={this.toggleUpdateModal}
             updateOneUser={this.handleUpdateOneUser}
           />
-        }
+        )}
 
         <button
           className="btn btn-primary px-3"
@@ -138,11 +128,11 @@ class API_UserManager extends Component {
             this.handleAddnewuser();
           }}
         >
-          <i class="fas fa-user-plus"></i>
+          <i className="fas fa-user-plus"></i>
           Add new User
         </button>
-        <table class="table">
-          <thead class="thead-dark">
+        <table className="table">
+          <thead className="thead-dark">
             <tr className="table-danger">
               <th scope="col">STT</th>
               <th scope="col">Email</th>
@@ -165,8 +155,20 @@ class API_UserManager extends Component {
                     <td>{item.address}</td>
                     <td>{item.gender}</td>
                     <td>
-                      <button onClick={() => { this.handeleUpdateService({ item }) }}>Edit</button>
-                      <button onClick={() => { this.handeleDeleteService({ item }) }} >Delete</button>
+                      <button
+                        onClick={() => {
+                          this.handeleUpdateService({ item });
+                        }}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        onClick={() => {
+                          this.handeleDeleteService({ item });
+                        }}
+                      >
+                        Delete
+                      </button>
                     </td>
                   </tr>
                 );

@@ -75,7 +75,7 @@ class Login extends Component {
                 value={this.state.email}
                 onChange={(event) => this.handleonchangeUsername(event)}
               ></input>
-              <label for="name" className="form-label" form="form-label">
+              <label htmlFor="name" className="form-label" form="form-label">
                 Name
               </label>
             </div>
@@ -87,7 +87,7 @@ class Login extends Component {
                 type={this.state.isshowpassword ? "text" : "password"}
                 onChange={(event) => this.handleonchangePassword(event)}
               ></input>
-              <label for="name" className="form-label" form="form-label">
+              <label htmlFor="name" className="form-label" form="form-label">
                 Password
               </label>
               <span
