@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import * as actions from "../../store/actions";
-import Navigator from "../../components/Navigator";
+import * as actions from "../../../store/actions";
+import Navigator from "../../../components/Navigator";
 import { adminMenu } from "./menuApp";
 import "./Header.scss";
-import { LANGUAGE } from "../../utils";
-import { chengeLanguageApp } from "../../store/actions";
+import { LANGUAGE } from "../../../utils";
+import { chengeLanguageApp } from "../../../store/actions";
 import { FormattedMessage } from "react-intl";
 class Header extends Component {
   changeLanguage = (language) => {

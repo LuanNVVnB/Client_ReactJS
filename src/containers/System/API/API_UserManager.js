@@ -6,7 +6,7 @@ import {
   createNewUserService,
   deleteUserService,
   updateUserService,
-} from "../../services/userService";
+} from "../../../services/userService";
 import API_UserModel from "./API_UserModel";
 import API_UserModelUpdate from "./API_UserModelUpdate";
 class API_UserManager extends Component {

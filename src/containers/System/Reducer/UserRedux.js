@@ -2,8 +2,8 @@ import React, { Component, Fragment } from "react";
 import { FormattedMessage } from "react-intl";
 import { connect } from "react-redux";
 import "./UserRedux.scss";
-import * as actions from "../../store/actions";
-import { LANGUAGE } from "../../utils";
+import * as actions from "../../../store/actions";
+import { LANGUAGE } from "../../../utils";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css"; // This only needs to be imported once in your app
 import UserReduxTable from "./UserReduxTable";
