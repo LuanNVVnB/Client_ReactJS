@@ -5,6 +5,7 @@ import API_UserManager from "../containers/System/API/API_UserManager";
 import Header from "../containers/System/Header/Header";
 import UserRedux from "../containers/System/Reducer/UserRedux";
 import ProductManage from "../containers/System/ProductManage";
+import DoctorManage from "../containers/System/Doctor/DoctorManage";
 class System extends Component {
   render() {
     const { systemMenuPath } = this.props;
@@ -17,11 +18,9 @@ class System extends Component {
               <Route path="/system/user-System" component={ProductManage} />
               <Route path="/system/user-redux" component={UserRedux} />
               <Route path="/system/user-API" component={API_UserManager} />
-              <Route
-                component={() => {
-                  return <Redirect to={systemMenuPath} />;
-                }}
-              />
+              <Route path="/system/doctor" component={DoctorManage} />
+              <Route path="/system/patient" component={API_UserManager} />
+              <Redirect to="/system/user-System" />
             </Switch>
           </div>
         </div>

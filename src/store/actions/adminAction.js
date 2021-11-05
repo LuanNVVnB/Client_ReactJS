@@ -7,6 +7,8 @@ import {
   updateUserService,
   getAlldoctorService,
 } from "../../services/userService";
+import { getAlldoctorManage } from "../../services/doctorService";
+
 import { toast } from "react-toastify";
 // 1.CREATE ACTION GENDER FOR DOM
 export const fetchGenderStart = () => {
@@ -137,7 +139,7 @@ export const fetchAllUserSuccess = (Alluser) => ({
 export const fetchAllUserFaided = () => ({
   type: actionTypes.FETCH_ALL_USER_FAILDED,
 });
-//FETCH ONE USER
+//6.FETCH ONE USER
 export const fetchOneUserStart = (idData) => {
   return async (dispatch) => {
     try {
@@ -211,7 +213,7 @@ export const updateUserSuccess = () => ({
 export const updateUserFaild = () => ({
   type: actionTypes.UPDATE_USER_FAILD,
 });
-//9. FECTH ALL DOCTOR
+//9. FECTH ALL DOCTOR FOR CLIENT
 export const fetchAllDoctorStart = () => {
   return async (dispatch) => {
     try {
@@ -234,4 +236,29 @@ export const fetchAllDoctorSuccess = (AllDoctor) => ({
 });
 export const fetchAllDoctorFaided = () => ({
   type: actionTypes.FETCH_ALL_DOCTOR_FAILDED,
+});
+//10.FETCH ALL DOCTOR FOR SERVER MANAGE
+
+export const AllDoctorStart = () => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: actionTypes.ALL_DOCTOR_START });
+      let res = await getAlldoctorManage("All");
+
+      if (res && res.errcode === 0) {
+        dispatch(AllDoctorSuccess(res));
+      } else {
+        dispatch(AllDoctorFaided());
+      }
+    } catch (e) {
+      dispatch(AllDoctorFaided());
+    }
+  };
+};
+export const AllDoctorSuccess = (AllDoctor) => ({
+  type: actionTypes.ALL_DOCTOR_SUCCESS,
+  data: AllDoctor,
+});
+export const AllDoctorFaided = () => ({
+  type: actionTypes.ALL_DOCTOR_FAILDED,
 });

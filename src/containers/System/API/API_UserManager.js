@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { FormattedMessage } from "react-intl";
 import { connect } from "react-redux";
 import {
@@ -9,6 +9,7 @@ import {
 } from "../../../services/userService";
 import API_UserModel from "./API_UserModel";
 import API_UserModelUpdate from "./API_UserModelUpdate";
+
 class API_UserManager extends Component {
   constructor(props) {
     super(props);
@@ -106,76 +107,78 @@ class API_UserManager extends Component {
     let arrUsers = this.state.arrUsers;
 
     return (
-      <div className="text-center">
-        <API_UserModel
-          createNewUser={this.createNewUser}
-          isOpen={this.state.isOpenModal}
-          toggleModal={this.toggleModal}
-        />
-        {this.state.isOpenUpdateModal && (
-          <API_UserModelUpdate
-            UserUpdate={this.state.userUpdate}
-            isOpen={this.state.isOpenUpdateModal}
-            // isOpen={true}
-            toggleModal={this.toggleUpdateModal}
-            updateOneUser={this.handleUpdateOneUser}
+      <Fragment>
+        <div className="text-center">
+          <API_UserModel
+            createNewUser={this.createNewUser}
+            isOpen={this.state.isOpenModal}
+            toggleModal={this.toggleModal}
           />
-        )}
+          {this.state.isOpenUpdateModal && (
+            <API_UserModelUpdate
+              UserUpdate={this.state.userUpdate}
+              isOpen={this.state.isOpenUpdateModal}
+              // isOpen={true}
+              toggleModal={this.toggleUpdateModal}
+              updateOneUser={this.handleUpdateOneUser}
+            />
+          )}
 
-        <button
-          className="btn btn-primary px-3"
-          onClick={() => {
-            this.handleAddnewuser();
-          }}
-        >
-          <i className="fas fa-user-plus"></i>
-          Add new User
-        </button>
-        <table className="table">
-          <thead className="thead-dark">
-            <tr className="table-danger">
-              <th scope="col">STT</th>
-              <th scope="col">Email</th>
-              <th scope="col">First name</th>
-              <th scope="col">Last name</th>
-              <th scope="col">Address</th>
-              <th scope="col">Gender</th>
-              <th scope="col">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {arrUsers &&
-              arrUsers.map((item, index) => {
-                return (
-                  <tr>
-                    <th scope="row">{index}</th>
-                    <td>{item.email}</td>
-                    <td>{item.firstName}</td>
-                    <td>{item.lastName}</td>
-                    <td>{item.address}</td>
-                    <td>{item.gender}</td>
-                    <td>
-                      <button
-                        onClick={() => {
-                          this.handeleUpdateService({ item });
-                        }}
-                      >
-                        Edit
-                      </button>
-                      <button
-                        onClick={() => {
-                          this.handeleDeleteService({ item });
-                        }}
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })}
-          </tbody>
-        </table>
-      </div>
+          <button
+            className="btn btn-primary px-3"
+            onClick={() => {
+              this.handleAddnewuser();
+            }}
+          >
+            <i className="fas fa-user-plus"></i>
+            Add new User
+          </button>
+          <table className="table">
+            <thead className="thead-dark">
+              <tr className="table-danger">
+                <th scope="col">STT</th>
+                <th scope="col">Email</th>
+                <th scope="col">First name</th>
+                <th scope="col">Last name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {arrUsers &&
+                arrUsers.map((item, index) => {
+                  return (
+                    <tr>
+                      <th scope="row">{index}</th>
+                      <td>{item.email}</td>
+                      <td>{item.firstName}</td>
+                      <td>{item.lastName}</td>
+                      <td>{item.address}</td>
+                      <td>{item.gender}</td>
+                      <td>
+                        <button
+                          onClick={() => {
+                            this.handeleUpdateService({ item });
+                          }}
+                        >
+                          Edit
+                        </button>
+                        <button
+                          onClick={() => {
+                            this.handeleDeleteService({ item });
+                          }}
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+            </tbody>
+          </table>
+        </div>
+      </Fragment>
     );
   }
 }

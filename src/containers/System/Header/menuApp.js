@@ -7,12 +7,20 @@ export const adminMenu = [
         name: "menu.system.system-administrator.header",
         subMenus: [
           {
-            name: "menu.system.menu-admin.doctor-management",
+            name: "menu.system.menu-admin.user-managementAPI",
             link: "/system/user-API",
           },
           {
-            name: "menu.system.menu-admin.patient-management",
+            name: "menu.system.menu-admin.user-managementREDUCER",
             link: "/system/user-redux",
+          },
+          {
+            name: "menu.system.menu-admin.doctor-management",
+            link: "/system/doctor",
+          },
+          {
+            name: "menu.system.menu-admin.patient-management",
+            link: "/system/patient",
           },
         ],
       },

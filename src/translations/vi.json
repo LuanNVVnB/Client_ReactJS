@@ -66,8 +66,10 @@
                 "booking-management":"Quản lý đặt lịch",
                 "clinic-management":"Quản lý phòng khám",
                 "medical-facility-management":"Quản lý cơ sở y tế",
-                "doctor-management":"Quản lý danh sách bác sĩ",
-                "patient-management":"Quản lý danh sách bệnh nhân"
+                "doctor-management":"Quản lý bác sĩ",
+                "user-managementAPI":"Quản lý người dùng API",
+                "user-managementREDUCER":"Danh sách người dùng REDUCER",
+                "patient-management":"Quản lý bệnh nhân"
 
             }
         }

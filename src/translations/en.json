@@ -67,6 +67,8 @@
                 "booking-management":"Booking management",
                 "clinic-management":"Clinic management",
                 "medical-facility-management":"Medical facility management",
+                "user-managementAPI":"User management API",
+                "user-managementREDUCER":"User management REDUCER",
                 "doctor-management":"Doctor management",
                 "patient-management":"Patient management"
 

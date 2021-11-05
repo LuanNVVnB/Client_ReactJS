@@ -5,13 +5,17 @@ const initialState = {
   roleId: [],
   positionId: [],
   isLoading: false,
+
   //list user
   users: [],
+
   //user updated
   userUpdate: [],
   //actions onlick
   autoAction: false,
+
   doctors: [],
+  Alldoctor: [],
 };
 
 const adminReducer = (state = initialState, action) => {
@@ -180,6 +184,24 @@ const adminReducer = (state = initialState, action) => {
       };
     case actionTypes.FETCH_ALL_DOCTOR_FAILDED:
       state.doctors = [];
+      return {
+        ...state,
+      };
+    //10 actions for all doctor
+    case actionTypes.ALL_DOCTOR_START:
+      return {
+        ...state,
+      };
+    case actionTypes.ALL_DOCTOR_SUCCESS:
+      //add data to API for state of reducer
+
+      state.Alldoctor = action.data.doctor;
+
+      return {
+        ...state,
+      };
+    case actionTypes.ALL_DOCTOR_FAILDED:
+      state.Alldoctor = [];
       return {
         ...state,
       };

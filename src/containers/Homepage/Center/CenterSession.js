@@ -8,16 +8,31 @@ import "slick-carousel/slick/slick-theme.css";
 import { FormattedMessage } from "react-intl";
 import { LANGUAGE } from "../../../utils";
 import { chengeLanguageApp } from "../../../store/actions";
+import DoctorModel from "./DoctorModel";
 
 class CenterSession extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isOpenModal: false,
+      idDoctor: "",
+    };
   }
   componentDidMount() {
     this.props.fetchAllDoctorStart();
     this.props.changelanguageAppRedux();
   }
+  handleOnlick = (idDoctor) => {
+    this.setState({
+      isOpenModal: true,
+      idDoctor: idDoctor,
+    });
+  };
+  toggleModal = () => {
+    this.setState({
+      isOpenModal: !this.state.isOpenModal,
+    });
+  };
 
   render() {
     let newdoctors = this.props.newDoctors;
@@ -58,6 +73,11 @@ class CenterSession extends Component {
     };
     return (
       <Fragment>
+        <DoctorModel
+          idDoctor={this.state.idDoctor}
+          isOpen={this.state.isOpenModal}
+          toggleModal={this.toggleModal}
+        />
         <div className="selection-doctor">
           <h4>
             <FormattedMessage id={"center.search"} />
@@ -68,9 +88,12 @@ class CenterSession extends Component {
               newdoctors.map((item) => {
                 return (
                   <div className="slick-item">
-                    <a href="#">
-                      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEaZBfm9unaOb8XySaJCZ8vw7aTCdmLZojBznpzP7nUikhETwAr707jfsvSGwSd117jh8&usqp=CAU" />
-                    </a>
+                    <img
+                      src={item.image}
+                      onClick={() => {
+                        this.handleOnlick(item.id);
+                      }}
+                    />
                     <div className="slick-information">
                       <span>
                         {" "}
