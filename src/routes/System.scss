@@ -1,0 +1,21 @@
+@import "../styles/common.scss";
+
+.system {
+    display         : flex;
+    justify-content : space-between;
+    background-color: $background2;
+    width           : 100%;
+    height          : 100%;
+
+    .menu {
+        background-color: antiquewhite;
+    }
+
+    .center-system {
+        width           : 100%;
+        height          : 100%;
+        left            : 0px;
+        background-color: darken($background2, 3);
+        padding         : 20px;
+    }
+}

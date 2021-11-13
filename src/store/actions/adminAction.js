@@ -7,7 +7,11 @@ import {
   updateUserService,
   getAlldoctorService,
 } from "../../services/userService";
-import { getAlldoctorManage } from "../../services/doctorService";
+import {
+  getAlldoctorManage,
+  saveInfoDoctorService,
+  getInfoDoctorService,
+} from "../../services/doctorService";
 
 import { toast } from "react-toastify";
 // 1.CREATE ACTION GENDER FOR DOM
@@ -244,8 +248,9 @@ export const AllDoctorStart = () => {
     try {
       dispatch({ type: actionTypes.ALL_DOCTOR_START });
       let res = await getAlldoctorManage("All");
-
+      console.log("res: ", res);
       if (res && res.errcode === 0) {
+        console.log("success");
         dispatch(AllDoctorSuccess(res));
       } else {
         dispatch(AllDoctorFaided());
@@ -261,4 +266,54 @@ export const AllDoctorSuccess = (AllDoctor) => ({
 });
 export const AllDoctorFaided = () => ({
   type: actionTypes.ALL_DOCTOR_FAILDED,
+});
+//11. SAVE INFO DOCTOR
+export const saveInfoDoctorStart = (data) => {
+  return async (dispatch) => {
+    try {
+      //dispatch api for reducer
+
+      let res = await saveInfoDoctorService(data);
+
+      if (res && res.errcode === 0) {
+        toast.success(res.message);
+        dispatch({ type: actionTypes.INFO_DOCTOR_START });
+        dispatch(saveInfoDoctorSuccess());
+      } else {
+        toast.error(res.message);
+      }
+    } catch (e) {
+      dispatch(saveInfoDoctorFaided());
+    }
+  };
+};
+export const saveInfoDoctorSuccess = () => ({
+  type: actionTypes.INFO_DOCTOR_SUCCESS,
+});
+export const saveInfoDoctorFaided = () => ({
+  type: actionTypes.INFO_DOCTOR_FAILED,
+});
+//12.FETCH ONE DOCTOR
+export const fetchOneDoctorStart = (idData) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: actionTypes.FETCH_ONE_DOCTOR_START });
+      let res = await getInfoDoctorService(idData);
+
+      if (res && res.errcode === 0) {
+        dispatch(fetchOneDoctorSuccess(res));
+      } else {
+        dispatch(fetchOneDoctorFaided());
+      }
+    } catch (e) {
+      dispatch(fetchOneDoctorFaided());
+    }
+  };
+};
+export const fetchOneDoctorSuccess = (doctor) => ({
+  type: actionTypes.FETCH_ONE_DOCTOR_SUCCESS,
+  data: doctor,
+});
+export const fetchOneDoctorFaided = () => ({
+  type: actionTypes.FETCH_ONE_DOCTOR_FAILDED,
 });

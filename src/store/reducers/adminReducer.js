@@ -14,8 +14,9 @@ const initialState = {
   //actions onlick
   autoAction: false,
 
-  doctors: [],
-  Alldoctor: [],
+  doctors: [], //display in client
+  Alldoctor: [], //display server
+  doctor: [], //doctor is searched
 };
 
 const adminReducer = (state = initialState, action) => {
@@ -194,14 +195,48 @@ const adminReducer = (state = initialState, action) => {
       };
     case actionTypes.ALL_DOCTOR_SUCCESS:
       //add data to API for state of reducer
-
       state.Alldoctor = action.data.doctor;
-
       return {
         ...state,
       };
     case actionTypes.ALL_DOCTOR_FAILDED:
       state.Alldoctor = [];
+      return {
+        ...state,
+      };
+    //11. info doctor
+    case actionTypes.INFO_DOCTOR_START:
+      state.isLoading = true;
+      return {
+        ...state,
+      };
+    case actionTypes.INFO_DOCTOR_SUCCESS:
+      //add data to API for state of reducer
+      state.isLoading = false;
+      return {
+        ...state,
+      };
+    case actionTypes.INFO_DOCTOR_FAILED:
+      state.isLoading = false;
+      return {
+        ...state,
+      };
+    //12. get info doctor
+    case actionTypes.FETCH_ONE_DOCTOR_START:
+      state.isLoading = true;
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_ONE_DOCTOR_SUCCESS:
+      //add data to API for state of reducer
+      state.isLoading = false;
+      state.doctor = action.data.doctor;
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_ONE_DOCTOR_FAILDED:
+      state.isLoading = false;
+
       return {
         ...state,
       };

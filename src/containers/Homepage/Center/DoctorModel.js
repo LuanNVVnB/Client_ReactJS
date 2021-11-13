@@ -1,44 +1,65 @@
 import React, { Component, Fragment } from "react";
-import { FormattedMessage } from "react-intl";
+import "./DoctorModel.scss";
+
 import { connect } from "react-redux";
+import { FormattedMessage } from "react-intl";
+import * as actions from "../../../store/actions";
+import { LANGUAGE } from "../../../utils";
+import { chengeLanguageApp } from "../../../store/actions";
 
 // import { Button, Modal } from "reactstrap";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
+
 class DoctorModel extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {};
+    this.state = {
+      detailDoctor: [],
+    };
   }
-
-  componentDidMount() {}
+  componentDidMount() {
+    this.setState({
+      detailDoctor: this.props.detailDoctor,
+    });
+  }
   toggle = () => {
     this.props.toggleModal();
   };
 
   render() {
+    let Doctor = this.state.detailDoctor;
+    const detailDoctor = Doctor.Detail ? Doctor.Detail.contentHTML : "";
+
     return (
       <Fragment>
         <Modal
           isOpen={this.props.isOpen}
+          detailDoctor={this.props.detailDoctor}
           toggle={() => {
             this.toggle();
           }}
-          size="lg"
+          size="xl"
         >
-          <ModalHeader
-            toggle={() => {
-              this.toggle();
-            }}
-          ></ModalHeader>
           <ModalBody>
             <div className="information-doctor">
-              <div className="avatar">{/* <img src={} /> */}</div>
+              <div className="avatar">
+                <img src={Doctor.image} />
+              </div>
               <div className="imformation">
-                <div className="name-doctor"></div>
+                <div className="name-doctor">
+                  <b>
+                    <FormattedMessage id="name-doctor" />:
+                    {this.props.language === LANGUAGE.VI
+                      ? Doctor.firstName + Doctor.lastName
+                      : Doctor.lastName + Doctor.firstName}
+                  </b>
+                </div>
                 <div className="kill"></div>
                 <div className="specalty"></div>
-                <div className="desription-doctor"></div>
+                <div
+                  className="desription-doctor"
+                  dangerouslySetInnerHTML={{ __html: detailDoctor }}
+                ></div>
                 <div className="center"></div>
                 <Button></Button>
               </div>
@@ -61,11 +82,15 @@ class DoctorModel extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {};
+  return {
+    language: state.app.language,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    changelanguageAppRedux: (language) => dispatch(chengeLanguageApp(language)),
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DoctorModel);

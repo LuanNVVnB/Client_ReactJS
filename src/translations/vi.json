@@ -20,7 +20,8 @@
         "search-contant":"Chúng tôi ở đây để giúp đỡ bất cứ khi nào bạn cảm thấy ốm, nhưng giữ cho bạn khỏe mạnh là ưu tiên hàng đầu của chúng tôi.",
         "check-contant":"Chúng tôi ở đây để giúp bạn tìm các cuộc hẹn tiêm vắc xin hiện có gần bạn hoặc thông báo cho bạn khi có sẵn.",
         "schedule-contant":"Từ dị ứng theo mùa đến nhận biết và điều trị ăn mày. chúng tôi có các nguồn. ",
-        "get-solution-contant":"chúng tôi có thể giúp bạn tìm các cuộc hẹn tiêm vắc-xin còn hiệu lực ở gần bạn hoặc thông báo cho bạn khi có sẵn."
+        "get-solution-contant":"chúng tôi có thể giúp bạn tìm các cuộc hẹn tiêm vắc-xin còn hiệu lực ở gần bạn hoặc thông báo cho bạn khi có sẵn.",
+        "name-doctor": "Tên Bác Sĩ"
     },
     "common": {
         "add": "Thêm",
@@ -62,14 +63,14 @@
             },
             "menu-admin":{
                 "user-management":"Quản lý người dùng",
-                "specialized-management":"Quản lý chuyên khoa",
-                "booking-management":"Quản lý đặt lịch",
-                "clinic-management":"Quản lý phòng khám",
-                "medical-facility-management":"Quản lý cơ sở y tế",
-                "doctor-management":"Quản lý bác sĩ",
-                "user-managementAPI":"Quản lý người dùng API",
-                "user-managementREDUCER":"Danh sách người dùng REDUCER",
-                "patient-management":"Quản lý bệnh nhân"
+                "specialized-management":"Chuyên khoa",
+                "booking-management":" Đặt lịch",
+                "clinic-management":"Phòng khám",
+                "medical-facility-management":"Cơ sở y tế",
+                "doctor-management":"Bác sĩ",
+                "user-managementAPI":"Người dùng API",
+                "user-managementREDUCER":"Người dùng REDUCER",
+                "patient-management":"Bệnh nhân"
 
             }
         }

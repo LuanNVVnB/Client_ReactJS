@@ -1,18 +1,16 @@
- //5.actions for fetch all doctor
-
-    case actionTypes.FETCH_ALL_DOCTOR_START:
+case actionTypes.ALL_DOCTOR_START:
       return {
         ...state,
       };
-    case actionTypes.FETCH_ALL_DOCTOR_SUCCESS:
+    case actionTypes.ALL_DOCTOR_SUCCESS:
       //add data to API for state of reducer
 
-      state.doctors = action.data.doctors;
+      state.doctors = action.data.doctor;
 
       return {
         ...state,
       };
-    case actionTypes.FETCH_ALL_DOCTOR_FAILDED:
+    case actionTypes.ALL_DOCTOR_FAILDED:
       state.doctors = [];
       return {
         ...state,

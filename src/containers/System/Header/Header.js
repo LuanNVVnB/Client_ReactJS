@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import * as actions from "../../../store/actions";
-import Navigator from "../../../components/Navigator";
-import { adminMenu } from "./menuApp";
+
 import "./Header.scss";
 import { LANGUAGE } from "../../../utils";
 import { chengeLanguageApp } from "../../../store/actions";
@@ -17,10 +16,6 @@ class Header extends Component {
 
     return (
       <div className="header-container">
-        {/* thanh navigator */}
-        <div className="header-tabs-container">
-          <Navigator menus={adminMenu} />
-        </div>
         <div className="header-welcome">
           <div className="welcome">
             <div className="title-welcome">

@@ -20,7 +20,8 @@
         "search-contant":" we're here to help whenever you feel ill,but keeping you healthy is our better priority.",
         "check-contant":"we're here to help you find avaliable vaccine appointments near you or notify you when availability.",
         "schedule-contant":" From seasional allergies to bum identification and treatments. we have the rescources.",
-        "get-solution-contant":" we're can help you find availible vaccine appointments near you or notify you when availability."
+        "get-solution-contant":" we're can help you find availible vaccine appointments near you or notify you when availability.",
+        "name-doctor": "Name Doctor"
         
     },
     "common": {
@@ -63,10 +64,10 @@
             },
             "menu-admin":{
                 "user-management":"User management",
-                "specialized-management":"Specialized management",
-                "booking-management":"Booking management",
-                "clinic-management":"Clinic management",
-                "medical-facility-management":"Medical facility management",
+                "specialized-management":"Specialized",
+                "booking-management":"Booking",
+                "clinic-management":"Clinic",
+                "medical-facility-management":"Medical facility",
                 "user-managementAPI":"User management API",
                 "user-managementREDUCER":"User management REDUCER",
                 "doctor-management":"Doctor management",

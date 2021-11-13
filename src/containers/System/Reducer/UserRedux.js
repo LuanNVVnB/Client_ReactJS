@@ -35,6 +35,7 @@ class UserRedux extends Component {
       idUpdate: "",
       //actions when changer
       actionChange: false,
+      setLoading: false,
     };
   }
 
@@ -117,21 +118,43 @@ class UserRedux extends Component {
       });
     }
   }
-  handleOnchangeImage = (event) => {
-    let data = event.target.files;
-    let file = data[0];
+  // handleOnchangeImage = (event) => {
+  //   let data = event.target.files;
+  //   let file = data[0];
 
-    if (file) {
-      let objectUrl = URL.createObjectURL(file);
+  //   if (file) {
+  //     let objectUrl = URL.createObjectURL(file);
 
-      this.setState({
-        previewImgURL: objectUrl,
-        avatar: objectUrl,
-      });
-    }
+  //     this.setState({
+  //       previewImgURL: objectUrl,
+  //       avatar: objectUrl,
+  //     });
+  //   }
+  // };
+  handleOnchangeImage = async (e) => {
+    const files = e.target.files;
+    const data = new FormData();
+    data.append("file", files[0]);
+    data.append("upload_preset", "vop4tq3m");
+    this.setState({
+      setLoading: true,
+    });
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/dh-cantho/image/upload",
+      {
+        method: "POST",
+        body: data,
+      }
+    );
+    const file = await res.json();
+    console.log(file);
+    this.setState({
+      avatar: file.secure_url,
+      setLoading: false,
+    });
   };
   openPriewImage = () => {
-    if (!this.state.previewImgURL) return;
+    if (!this.state.avatar) return;
     else {
       this.setState({
         isOpen: true,
@@ -401,24 +424,30 @@ class UserRedux extends Component {
               </Form.Label>
               <Form.Control
                 type="file"
-                id="img-avatar"
-                hidden
+                // id="img-avatar"
+                // hidden
                 name="avatar"
+                placeholder="upload an image"
                 onChange={(event) => {
                   this.handleOnchangeImage(event);
                 }}
               />
-              <Form.Label htmlFor="img-avatar" className="label-avatar">
+              {this.state.setLoading ? (
+                <h3> Loading...</h3>
+              ) : (
+                <div
+                  className="preview-image"
+                  style={{ backgroundImage: `url(${this.state.avatar})` }}
+                  onClick={() => this.openPriewImage()}
+                ></div>
+              )}
+              {/* <Form.Label htmlFor="img-avatar" className="label-avatar">
                 tai anh
-              </Form.Label>
-              <div
-                className="preview-image"
-                style={{ backgroundImage: `url(${this.state.previewImgURL})` }}
-                onClick={() => this.openPriewImage()}
-              ></div>
+              </Form.Label> */}
+
               {this.state.isOpen === true && (
                 <Lightbox
-                  mainSrc={this.state.previewImgURL}
+                  mainSrc={this.state.avatar}
                   onCloseRequest={() => this.setState({ isOpen: false })}
                 />
               )}

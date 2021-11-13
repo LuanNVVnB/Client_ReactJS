@@ -15,18 +15,25 @@ class CenterSession extends Component {
     super(props);
     this.state = {
       isOpenModal: false,
-      idDoctor: "",
+      detailDoctor: [],
     };
   }
   componentDidMount() {
     this.props.fetchAllDoctorStart();
     this.props.changelanguageAppRedux();
   }
-  handleOnlick = (idDoctor) => {
-    this.setState({
-      isOpenModal: true,
-      idDoctor: idDoctor,
-    });
+  handleOnlick = async (idDoctor) => {
+    try {
+      await this.props.fetchOneDoctorStart(idDoctor);
+      if (!this.props.isLoading) {
+        this.setState({
+          isOpenModal: true,
+          detailDoctor: this.props.doctor,
+        });
+      }
+    } catch (e) {
+      console.log("errorr: ", e);
+    }
   };
   toggleModal = () => {
     this.setState({
@@ -73,11 +80,13 @@ class CenterSession extends Component {
     };
     return (
       <Fragment>
-        <DoctorModel
-          idDoctor={this.state.idDoctor}
-          isOpen={this.state.isOpenModal}
-          toggleModal={this.toggleModal}
-        />
+        {this.state.isOpenModal && (
+          <DoctorModel
+            detailDoctor={this.state.detailDoctor}
+            isOpen={this.state.isOpenModal}
+            toggleModal={this.toggleModal}
+          />
+        )}
         <div className="selection-doctor">
           <h4>
             <FormattedMessage id={"center.search"} />
@@ -169,6 +178,8 @@ const mapStateToProps = (state) => {
     isLoggedIn: state.user.isLoggedIn,
     language: state.app.language,
     newDoctors: state.admin.doctors,
+    doctor: state.admin.doctor,
+    isLoading: state.admin.isLoading,
   };
 };
 
@@ -177,6 +188,8 @@ const mapDispatchToProps = (dispatch) => {
     processLogout: () => dispatch(actions.processLogout()),
     changelanguageAppRedux: (language) => dispatch(chengeLanguageApp(language)),
     fetchAllDoctorStart: () => dispatch(actions.fetchAllDoctorStart()),
+    fetchOneDoctorStart: (iddoctor) =>
+      dispatch(actions.fetchOneDoctorStart(iddoctor)),
   };
 };
 

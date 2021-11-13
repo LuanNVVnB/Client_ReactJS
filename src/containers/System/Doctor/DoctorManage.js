@@ -6,15 +6,11 @@ import MarkdownIt from "markdown-it";
 import MdEditor from "react-markdown-editor-lite";
 import "react-markdown-editor-lite/lib/index.css";
 import * as actions from "../../../store/actions";
+import { LANGUAGE } from "../../../utils";
 
 const mdParser = new MarkdownIt(/* Markdown-it options */);
 
 // Finish!
-const options = [
-  { value: "chocolate", label: "Chocolate" },
-  { value: "strawberry", label: "Strawberry" },
-  { value: "vanilla", label: "Vanilla" },
-];
 
 class DoctorMange extends Component {
   constructor(props) {
@@ -24,16 +20,39 @@ class DoctorMange extends Component {
       contentHTML: "",
       contentMarkdown: "",
       description: "",
+      listDoctors: [],
     };
   }
+  buildSelectDoctor = (inputData) => {
+    let result = [];
+    let language = this.props.language;
+    if (inputData && inputData.length > 0) {
+      inputData.map((item) => {
+        let doctor = {};
+        let labelVi = `${item.lastName} ${item.firstName}`;
+        let labelEn = `${item.firstName} ${item.lastName}`;
+        doctor.label = language === LANGUAGE.VI ? labelVi : labelEn;
+        doctor.value = item.id;
+        result.push(doctor);
+      });
+    }
+    return result;
+  };
 
   componentDidMount() {
     this.props.AllDoctorStart();
   }
   componentDidUpdate(prevProps) {
     if (prevProps.Alldoctor !== this.props.Alldoctor) {
+      let dataselect = this.buildSelectDoctor(this.props.Alldoctor);
       this.setState({
-        selectedDoctor: this.props.Alldoctor,
+        listDoctors: dataselect,
+      });
+    }
+    if (prevProps.language !== this.props.language) {
+      let dataselect = this.buildSelectDoctor(this.props.Alldoctor);
+      this.setState({
+        listDoctors: dataselect,
       });
     }
   }
@@ -49,7 +68,18 @@ class DoctorMange extends Component {
     this.setState({ selectedDoctor });
   };
   handleOnlickSubmit = () => {
-    console.log("contentHTML: ", this.state);
+    let data = {
+      contentHTML: this.state.contentHTML,
+      contentMarkdown: this.state.contentMarkdown,
+      description: this.state.description,
+      doctorId: this.state.selectedDoctor.value,
+    };
+    this.props.saveInfoDoctorStart(data);
+  };
+  handleSearchDoctor = () => {
+    console.log("select: ", this.state.selectedDoctor.value);
+    this.props.fetchOneDoctorStart(this.state.selectedDoctor.value);
+    console.log("doctor:", this.props.doctor);
   };
   render() {
     const { selectedDoctor } = this.state;
@@ -58,8 +88,17 @@ class DoctorMange extends Component {
         <Select
           value={selectedDoctor}
           onChange={this.handleChange}
-          options={options}
+          options={this.state.listDoctors}
         />
+        <button
+          type="submit"
+          value="search"
+          onClick={() => {
+            this.handleSearchDoctor();
+          }}
+        >
+          Search
+        </button>
 
         <MdEditor
           style={{ height: "500px" }}
@@ -72,7 +111,9 @@ class DoctorMange extends Component {
           onClick={() => {
             this.handleOnlickSubmit();
           }}
-        ></button>
+        >
+          save
+        </button>
       </Fragment>
     );
   }
@@ -82,6 +123,7 @@ const mapStateToProps = (state) => {
   return {
     language: state.app.language,
     Alldoctor: state.admin.Alldoctor,
+    doctor: state.admin.doctor,
   };
 };
 
@@ -89,6 +131,12 @@ const mapDispatchToProps = (dispatch) => {
   return {
     AllDoctorStart: () => {
       dispatch(actions.AllDoctorStart());
+    },
+    saveInfoDoctorStart: (data) => {
+      dispatch(actions.saveInfoDoctorStart(data));
+    },
+    fetchOneDoctorStart: (idDoctor) => {
+      dispatch(actions.fetchOneDoctorStart(idDoctor));
     },
   };
 };
