@@ -13,9 +13,17 @@
 
     .center-system {
         width           : 100%;
-        height          : 100%;
+        height          : 100vh;
         left            : 0px;
         background-color: darken($background2, 3);
         padding         : 20px;
+
+        .system-list {
+            width : 100%;
+            height: 100vh;
+            margin: 0;
+
+
+        }
     }
 }

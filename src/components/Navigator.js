@@ -7,9 +7,9 @@ import "./Navigator.scss";
 
 class MenuGroup extends Component {
   render() {
-    const { name, children } = this.props;
+    const { name, children, active } = this.props;
     return (
-      <li className="menu-group ">
+      <li className={"menu-group" + (active ? " active" : "")}>
         <div className={"menu-group-name"}>
           <FormattedMessage id={name} />
         </div>
@@ -65,10 +65,14 @@ class SubMenu extends Component {
   };
 
   render() {
-    const { name, link, onLinkClick } = this.props;
+    const { name, link, onLinkClick, lick } = this.props;
     return (
       <li className={"sub-menu " + this.getItemClass(link)}>
-        <Link to={link} className="sub-menu-link" onClick={onLinkClick}>
+        <Link
+          to={link}
+          className="sub-menu-link"
+          onClick={onLinkClick && lick == true}
+        >
           <FormattedMessage id={name} />
         </Link>
       </li>
@@ -205,6 +209,14 @@ class Navigator extends Component {
           </div>
           <div className="center">
             <div className="name-menu">MENU</div>
+
+            <Link
+              to={"/system/dashdoard"}
+              className="dash-board"
+              onClick={onLinkClick}
+            >
+              <FormattedMessage id={"menu.system.menu-admin.dash-board"} />
+            </Link>
             <ul className="navigator-menu list-unstyled">
               {menus.map((group, groupIndex) => {
                 return (

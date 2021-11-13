@@ -16,6 +16,7 @@ class Header extends Component {
 
     return (
       <div className="header-container">
+        <div className="search-item"></div>
         <div className="header-welcome">
           <div className="welcome">
             <div className="title-welcome">

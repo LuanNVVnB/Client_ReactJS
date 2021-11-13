@@ -25,11 +25,11 @@ class API_UserModel extends Component {
       address: "",
       phonenumber: "",
       gender: true,
-      roleId: ""
-    }
+      roleId: "",
+    };
   }
 
-  componentDidMount() { }
+  componentDidMount() {}
   toggle = () => {
     this.props.toggleModal();
   };
@@ -37,13 +37,19 @@ class API_UserModel extends Component {
     let copystate = { ...this.state };
     copystate[id] = event.target.value;
     this.setState({
-      ...copystate
-    })
-
-  }
+      ...copystate,
+    });
+  };
   checkValideInput = () => {
     let valid = true;
-    let arrInput = ['email', 'password', 'firstname', 'lastname', 'address', 'phonenumber'];
+    let arrInput = [
+      "email",
+      "password",
+      "firstname",
+      "lastname",
+      "address",
+      "phonenumber",
+    ];
     for (let i = 0; i < arrInput.length; i++) {
       if (!this.state[arrInput[i]]) {
         alert("Missing parameter: " + arrInput[i]);
@@ -52,15 +58,14 @@ class API_UserModel extends Component {
       }
     }
     return valid;
-  }
+  };
   handleAddNewUser = () => {
     let valide = this.checkValideInput();
     if (valide === true) {
       // this.props.createNewUser(this.state);
       this.props.createNewUser(this.state);
-
     }
-  }
+  };
 
   render() {
     return (
@@ -109,7 +114,6 @@ class API_UserModel extends Component {
               ></input>
             </div>
 
-
             <div className="form-group">
               <label for="inputAddress">Firstname</label>
               <input
@@ -152,8 +156,7 @@ class API_UserModel extends Component {
                   this.handleOnchangeInput(event, "address");
                 }}
               ></input>
-
-            </div >
+            </div>
 
             <Row form style={{ display: "flex" }}>
               <Col md={6}>
@@ -184,11 +187,13 @@ class API_UserModel extends Component {
                       this.handleOnchangeInput(event, "gender");
                     }}
                   >
-                    <option selected value="M">malde</option>
+                    <option selected value="M">
+                      malde
+                    </option>
                     <option value="F">fmalde</option>
                   </select>
                 </FormGroup>
-              </Col >
+              </Col>
               <Col md={2}>
                 <FormGroup>
                   <label for="inputZip">Role</label>
@@ -208,13 +213,13 @@ class API_UserModel extends Component {
                     <option value="patient">patient</option>
                   </select>
                 </FormGroup>
-              </Col >
-            </Row >
+              </Col>
+            </Row>
 
             {/* /* <button type="submit" className="btn btn-primary">
                 Update
             //   </button> */}
-          </ModalBody >
+          </ModalBody>
           <ModalFooter>
             <Button
               color="primary"
@@ -233,8 +238,8 @@ class API_UserModel extends Component {
               Cancel
             </Button>
           </ModalFooter>
-        </Modal >
-      </Fragment >
+        </Modal>
+      </Fragment>
     );
   }
 }

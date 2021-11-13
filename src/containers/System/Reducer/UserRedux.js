@@ -252,172 +252,8 @@ class UserRedux extends Component {
 
     return (
       <Fragment>
-        {/* Form add new User */}
-        <Form className="form-doctor">
-          <Row className="mb-3">
-            <Form.Group as={Col}>
-              <Form.Label>
-                <FormattedMessage id={"system.user-redux.email"} />
-              </Form.Label>
-              <Form.Control
-                name="email"
-                type="email"
-                placeholder="Enter email"
-                value={this.state.email}
-                onChange={(event) => {
-                  this.handleOnchangeInput(event);
-                }}
-              />
-            </Form.Group>
-
-            <Form.Group as={Col}>
-              <Form.Label>
-                <FormattedMessage id={"system.user-redux.password"} />
-              </Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Password"
-                name="password"
-                onChange={(event) => {
-                  this.handleOnchangeInput(event);
-                }}
-              />
-            </Form.Group>
-          </Row>
-          <Row className="mb-3">
-            <Form.Group as={Col}>
-              <Form.Label>
-                <FormattedMessage id={"system.user-redux.first-name"} />
-              </Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter First Name"
-                name="firstName"
-                value={this.state.firstName}
-                onChange={(event) => {
-                  this.handleOnchangeInput(event);
-                }}
-              />
-            </Form.Group>
-
-            <Form.Group as={Col}>
-              <Form.Label>
-                <FormattedMessage id={"system.user-redux.last-name"} />
-              </Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter Last Name"
-                name="lastName"
-                value={this.state.lastName}
-                onChange={(event) => {
-                  this.handleOnchangeInput(event);
-                }}
-              />
-            </Form.Group>
-            <Form.Group as={Col}>
-              <Form.Label>
-                <FormattedMessage id={"system.user-redux.phone-number"} />
-              </Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter Phone Number"
-                name="phoneNumber"
-                value={this.state.phoneNumber}
-                onChange={(event) => {
-                  this.handleOnchangeInput(event);
-                }}
-              />
-            </Form.Group>
-          </Row>
-
-          <Form.Group className="mb-3">
-            <Form.Label>
-              <FormattedMessage id={"system.user-redux.address"} />
-            </Form.Label>
-            <Form.Control
-              placeholder="1234 Main St"
-              type="text"
-              name="address"
-              value={this.state.address}
-              onChange={(event) => {
-                this.handleOnchangeInput(event);
-              }}
-            />
-          </Form.Group>
-
-          <Row className="mb-3">
-            <Form.Group as={Col}>
-              <Form.Label>
-                <FormattedMessage id={"system.user-redux.gender"} />
-              </Form.Label>
-              <Form.Select
-                value={this.state.gender}
-                name="gender"
-                onChange={(event) => {
-                  this.handleOnchangeInput(event);
-                }}
-              >
-                {genders &&
-                  genders.length > 0 &&
-                  genders.map((item, index) => {
-                    return (
-                      <option key={index} value={item.keyMap}>
-                        {this.props.language === LANGUAGE.VI
-                          ? item.valueVi
-                          : item.valueEn}
-                      </option>
-                    );
-                  })}
-              </Form.Select>
-            </Form.Group>
-            <Form.Group as={Col}>
-              <Form.Label>
-                <FormattedMessage id={"system.user-redux.rodeId"} />
-              </Form.Label>
-              <Form.Select
-                value={this.state.roleIds}
-                name="roleIds"
-                onChange={(event) => {
-                  this.handleOnchangeInput(event);
-                }}
-              >
-                {rodeid &&
-                  rodeid.length > 0 &&
-                  rodeid.map((item, index) => {
-                    return (
-                      <option key={index} value={item.keyMap}>
-                        {this.props.language === LANGUAGE.VI
-                          ? item.valueVi
-                          : item.valueEn}
-                      </option>
-                    );
-                  })}
-              </Form.Select>
-            </Form.Group>
-            <Form.Group as={Col}>
-              <Form.Label>
-                <FormattedMessage id={"system.user-redux.positionId"} />
-              </Form.Label>
-              <Form.Select
-                value={this.state.positionIds}
-                name="positionIds"
-                onChange={(event) => {
-                  this.handleOnchangeInput(event);
-                }}
-              >
-                {positionid &&
-                  positionid.length > 0 &&
-                  positionid.map((item, index) => {
-                    return (
-                      <option key={index} value={item.keyMap}>
-                        {this.props.language === LANGUAGE.VI
-                          ? item.valueVi
-                          : item.valueEn}
-                      </option>
-                    );
-                  })}
-              </Form.Select>
-            </Form.Group>
+        <div className="user-redux">
+          <div className="avatar-form">
             <Form.Group as={Col}>
               <Form.Label>
                 <FormattedMessage id={"system.user-redux.avatar"} />
@@ -437,9 +273,10 @@ class UserRedux extends Component {
               ) : (
                 <div
                   className="preview-image"
-                  style={{ backgroundImage: `url(${this.state.avatar})` }}
                   onClick={() => this.openPriewImage()}
-                ></div>
+                >
+                  <img src={this.state.avatar}></img>
+                </div>
               )}
               {/* <Form.Label htmlFor="img-avatar" className="label-avatar">
                 tai anh
@@ -452,21 +289,189 @@ class UserRedux extends Component {
                 />
               )}
             </Form.Group>
-          </Row>
+          </div>
+          <div className="center-form">
+            {/* Form add new User */}
+            <Form className="form-doctor">
+              <Row className="mb-3">
+                <Form.Group as={Col}>
+                  <Form.Label>
+                    <FormattedMessage id={"system.user-redux.email"} />
+                  </Form.Label>
+                  <Form.Control
+                    name="email"
+                    type="email"
+                    placeholder="Enter email"
+                    value={this.state.email}
+                    onChange={(event) => {
+                      this.handleOnchangeInput(event);
+                    }}
+                  />
+                </Form.Group>
 
-          <Button
-            variant="primary"
-            onClick={() => {
-              this.handleOnchangeSubmit();
-            }}
-          >
-            {this.state.actionChange === true ? (
-              <FormattedMessage id={"system.user-redux.updateUser"} />
-            ) : (
-              <FormattedMessage id={"system.user-redux.saveUser"} />
-            )}
-          </Button>
-        </Form>
+                <Form.Group as={Col}>
+                  <Form.Label>
+                    <FormattedMessage id={"system.user-redux.password"} />
+                  </Form.Label>
+                  <Form.Control
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    onChange={(event) => {
+                      this.handleOnchangeInput(event);
+                    }}
+                  />
+                </Form.Group>
+                <Form.Group as={Col}>
+                  <Form.Label>
+                    <FormattedMessage id={"system.user-redux.phone-number"} />
+                  </Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter Phone Number"
+                    name="phoneNumber"
+                    value={this.state.phoneNumber}
+                    onChange={(event) => {
+                      this.handleOnchangeInput(event);
+                    }}
+                  />
+                </Form.Group>
+              </Row>
+              <Row className="mb-3">
+                <Form.Group as={Col}>
+                  <Form.Label>
+                    <FormattedMessage id={"system.user-redux.first-name"} />
+                  </Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter First Name"
+                    name="firstName"
+                    value={this.state.firstName}
+                    onChange={(event) => {
+                      this.handleOnchangeInput(event);
+                    }}
+                  />
+                </Form.Group>
+
+                <Form.Group as={Col}>
+                  <Form.Label>
+                    <FormattedMessage id={"system.user-redux.last-name"} />
+                  </Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter Last Name"
+                    name="lastName"
+                    value={this.state.lastName}
+                    onChange={(event) => {
+                      this.handleOnchangeInput(event);
+                    }}
+                  />
+                </Form.Group>
+                <Form.Group as={Col}>
+                  <Form.Label>
+                    <FormattedMessage id={"system.user-redux.address"} />
+                  </Form.Label>
+                  <Form.Control
+                    placeholder="1234 Main St"
+                    type="text"
+                    name="address"
+                    value={this.state.address}
+                    onChange={(event) => {
+                      this.handleOnchangeInput(event);
+                    }}
+                  />
+                </Form.Group>
+              </Row>
+              <Row className="mb-3">
+                <Form.Group as={Col}>
+                  <Form.Label>
+                    <FormattedMessage id={"system.user-redux.gender"} />
+                  </Form.Label>
+                  <Form.Select
+                    value={this.state.gender}
+                    name="gender"
+                    onChange={(event) => {
+                      this.handleOnchangeInput(event);
+                    }}
+                  >
+                    {genders &&
+                      genders.length > 0 &&
+                      genders.map((item, index) => {
+                        return (
+                          <option key={index} value={item.keyMap}>
+                            {this.props.language === LANGUAGE.VI
+                              ? item.valueVi
+                              : item.valueEn}
+                          </option>
+                        );
+                      })}
+                  </Form.Select>
+                </Form.Group>
+                <Form.Group as={Col}>
+                  <Form.Label>
+                    <FormattedMessage id={"system.user-redux.rodeId"} />
+                  </Form.Label>
+                  <Form.Select
+                    value={this.state.roleIds}
+                    name="roleIds"
+                    onChange={(event) => {
+                      this.handleOnchangeInput(event);
+                    }}
+                  >
+                    {rodeid &&
+                      rodeid.length > 0 &&
+                      rodeid.map((item, index) => {
+                        return (
+                          <option key={index} value={item.keyMap}>
+                            {this.props.language === LANGUAGE.VI
+                              ? item.valueVi
+                              : item.valueEn}
+                          </option>
+                        );
+                      })}
+                  </Form.Select>
+                </Form.Group>
+                <Form.Group as={Col}>
+                  <Form.Label>
+                    <FormattedMessage id={"system.user-redux.positionId"} />
+                  </Form.Label>
+                  <Form.Select
+                    value={this.state.positionIds}
+                    name="positionIds"
+                    onChange={(event) => {
+                      this.handleOnchangeInput(event);
+                    }}
+                  >
+                    {positionid &&
+                      positionid.length > 0 &&
+                      positionid.map((item, index) => {
+                        return (
+                          <option key={index} value={item.keyMap}>
+                            {this.props.language === LANGUAGE.VI
+                              ? item.valueVi
+                              : item.valueEn}
+                          </option>
+                        );
+                      })}
+                  </Form.Select>
+                </Form.Group>
+              </Row>
+
+              <Button
+                variant="primary"
+                onClick={() => {
+                  this.handleOnchangeSubmit();
+                }}
+              >
+                {this.state.actionChange === true ? (
+                  <FormattedMessage id={"system.user-redux.updateUser"} />
+                ) : (
+                  <FormattedMessage id={"system.user-redux.saveUser"} />
+                )}
+              </Button>
+            </Form>
+          </div>
+        </div>
         {/* table user with redux */}
         <UserReduxTable handleEditUser={this.handeleUpdate} />
       </Fragment>

@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { FormattedMessage } from "react-intl";
 import { connect } from "react-redux";
+import "./API_UserManager.scss";
 import {
   getAlluser,
   createNewUserService,
@@ -125,7 +126,8 @@ class API_UserManager extends Component {
           )}
 
           <button
-            className="btn btn-primary px-3"
+            style={{ left: "10px" }}
+            className="btn1"
             onClick={() => {
               this.handleAddnewuser();
             }}

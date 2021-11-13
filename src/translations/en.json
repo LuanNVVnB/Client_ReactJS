@@ -71,7 +71,8 @@
                 "user-managementAPI":"User management API",
                 "user-managementREDUCER":"User management REDUCER",
                 "doctor-management":"Doctor management",
-                "patient-management":"Patient management"
+                "patient-management":"Patient management",
+                "dash-board": "Dashboard"
 
             }
         }

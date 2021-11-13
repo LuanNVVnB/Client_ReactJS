@@ -70,7 +70,8 @@
                 "doctor-management":"Bác sĩ",
                 "user-managementAPI":"Người dùng API",
                 "user-managementREDUCER":"Người dùng REDUCER",
-                "patient-management":"Bệnh nhân"
+                "patient-management":"Bệnh nhân",
+                "dash-board": "Trang Chủ"
 
             }
         }

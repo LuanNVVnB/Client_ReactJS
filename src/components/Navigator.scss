@@ -72,6 +72,15 @@
             color      : $button-color;
         }
 
+        .dash-board {
+            text-decoration: none;
+            margin-left    : 10px;
+            line-height    : 40px;
+            padding        : 0 15px;
+            transition     : 0.5s;
+            color          : $text-in-light;
+        }
+
         .navigator-menu {
             margin-left     : 10px;
             background-color: $background2;
@@ -83,6 +92,7 @@
             }
 
             .menu-group {
+                background-color: $background2;
 
 
                 &:hover {
@@ -90,8 +100,7 @@
                     background-color: darken($button-color, 5);
                     color           : $common-text-color1;
                     border-radius   : 5px 0px 0px 5px;
-
-                    transition: 0.5s;
+                    transition      : 0.5s;
                 }
 
 
@@ -137,8 +146,8 @@
                             box-shadow        : 2px 2px 4px 0 $box-shadow-color;
                             -webkit-box-shadow: 2px 2px 4px 0 $box-shadow-color;
                             position          : absolute;
-                            top               : 0;
-                            left              : 240px;
+                            top               : 35px;
+                            left              : 120px;
                             padding           : 0;
 
                             .sub-menu {
@@ -153,7 +162,7 @@
 
                                 .sub-menu-link {
                                     text-decoration: none;
-                                    color          : $text-in-light;
+                                    color          : $common-text-color1;
                                 }
 
                                 a {
@@ -174,6 +183,7 @@
 
                         &:hover {
                             background-color: darken($bg-menu-color, 3);
+                            color           : $common-text-color1;
 
                             .sub-menu-list {
                                 display: block;
@@ -194,10 +204,13 @@
                     .menu-list {
                         position: relative;
                         display : block;
-
-
-
+                        z-index : 99;
+                        color   : $common-text-color1;
                     }
+                }
+
+                &.active {
+                    background-color: $button-color;
                 }
             }
         }

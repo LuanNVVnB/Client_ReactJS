@@ -10,6 +10,7 @@ import ProductManage from "../containers/System/ProductManage";
 import DoctorManage from "../containers/System/Doctor/DoctorManage";
 import { adminMenu } from "../containers/System/Header/menuApp";
 import CustomScrollbars from "../components/CustomScrollbars";
+
 class System extends Component {
   render() {
     const { systemMenuPath } = this.props;
@@ -21,17 +22,16 @@ class System extends Component {
           </div>
           <div className="center-system">
             {this.props.isLoggedIn && <Header />}
-            <div className="system-container">
-              <div className="system-list">
-                <Switch>
-                  <Route path="/system/user-System" component={ProductManage} />
-                  <Route path="/system/user-redux" component={UserRedux} />
-                  <Route path="/system/user-API" component={API_UserManager} />
-                  <Route path="/system/doctor" component={DoctorManage} />
-                  <Route path="/system/patient" component={API_UserManager} />
-                  <Redirect to="/system/user-System" />
-                </Switch>
-              </div>
+
+            <div className="system-list">
+              <Switch>
+                <Route path="/system/user-System" component={ProductManage} />
+                <Route path="/system/user-redux" component={UserRedux} />
+                <Route path="/system/user-API" component={API_UserManager} />
+                <Route path="/system/doctor" component={DoctorManage} />
+                <Route path="/system/patient" component={API_UserManager} />
+                <Redirect to="/system/user-System" />
+              </Switch>
             </div>
           </div>
         </div>
