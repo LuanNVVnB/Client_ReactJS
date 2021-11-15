@@ -60,6 +60,14 @@ class Login extends Component {
       isshowpassword: !this.state.isshowpassword,
     });
   };
+  handleKeyDown = (event) => {
+    if (
+      event.key === "Enter" ||
+      (event.keyCode === 13 && this.state.email !== "")
+    ) {
+      this.handleLogin();
+    }
+  };
 
   render() {
     return (
@@ -86,6 +94,7 @@ class Login extends Component {
                 value={this.state.password}
                 type={this.state.isshowpassword ? "text" : "password"}
                 onChange={(event) => this.handleonchangePassword(event)}
+                onKeyDown={(event) => this.handleKeyDown(event)}
               ></input>
               <label htmlFor="name" className="form-label" form="form-label">
                 Password

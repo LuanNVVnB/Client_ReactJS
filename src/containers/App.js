@@ -16,6 +16,7 @@ import Home from "../routes/Home";
 import Login from "./LAR/Login";
 import Header from "./System/Header/Header";
 import System from "../routes/System";
+
 import CustomScrollbars from "../components/CustomScrollbars";
 
 import HomePage from "./Homepage/HomePage.js";
@@ -59,6 +60,7 @@ class App extends Component {
                   path={path.SYSTEM}
                   component={userIsAuthenticated(System)}
                 />
+
                 <CustomScrollbars style={{ height: "100vh", width: "100%" }}>
                   <Route path={path.HOMEPAGE} component={HomePage} />
                 </CustomScrollbars>

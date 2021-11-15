@@ -71,7 +71,8 @@
                 "user-managementAPI":"Người dùng API",
                 "user-managementREDUCER":"Người dùng REDUCER",
                 "patient-management":"Bệnh nhân",
-                "dash-board": "Trang Chủ"
+                "dash-board": "Trang Chủ",
+                "medical-plan":"Kế hoạch khám bệnh"
 
             }
         }

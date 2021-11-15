@@ -317,3 +317,28 @@ export const fetchOneDoctorSuccess = (doctor) => ({
 export const fetchOneDoctorFaided = () => ({
   type: actionTypes.FETCH_ONE_DOCTOR_FAILDED,
 });
+// 1.CREATE ACTION GENDER FOR DOM
+export const fetchTimeStart = () => {
+  return async (dispatch) => {
+    try {
+      //dispatch api for reducer
+      dispatch({ type: actionTypes.FETCH_TIME_START });
+      let res = await getAllcodeService("TIME");
+
+      if (res && res.errcode === 0) {
+        dispatch(fetchTimeSuccess(res));
+      } else {
+        dispatch(fetchTimeFaided());
+      }
+    } catch (e) {
+      dispatch(fetchTimeFaided());
+    }
+  };
+};
+export const fetchTimeSuccess = (timeData) => ({
+  type: actionTypes.FETCH_TIME_SUCCESS,
+  data: timeData,
+});
+export const fetchTimeFaided = () => ({
+  type: actionTypes.FETCH_TIME_FAIDED,
+});

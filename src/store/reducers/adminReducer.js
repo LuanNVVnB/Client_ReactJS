@@ -4,6 +4,7 @@ const initialState = {
   genders: [],
   roleId: [],
   positionId: [],
+  times: [],
   isLoading: false,
 
   //list user
@@ -237,6 +238,24 @@ const adminReducer = (state = initialState, action) => {
     case actionTypes.FETCH_ONE_DOCTOR_FAILDED:
       state.isLoading = false;
 
+      return {
+        ...state,
+      };
+    // 1.actions for Time
+    case actionTypes.FETCH_TIME_START:
+      state.isLoading = true;
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_TIME_SUCCESS:
+      //add data to API for state of reducer
+      state.times = action.data.data;
+      state.isLoading = false;
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_TIME_FAIDED:
+      state.isLoading = false;
       return {
         ...state,
       };

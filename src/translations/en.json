@@ -72,7 +72,8 @@
                 "user-managementREDUCER":"User management REDUCER",
                 "doctor-management":"Doctor management",
                 "patient-management":"Patient management",
-                "dash-board": "Dashboard"
+                "dash-board": "Dashboard",
+                "medical-plan":"Medical examination plan"
 
             }
         }
