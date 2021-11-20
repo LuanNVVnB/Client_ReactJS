@@ -12,5 +12,17 @@ let getInfoDoctorService = (doctorId) => {
   // return axios.get("/api/get_All_user?id=" + userId, { id: userId });
   return axios.get(`/api/get_Info_doctor?id=${doctorId}`, { id: doctorId });
 };
+let saveScheduleDoctor = (data) => {
+  return axios.post("/api/save_Schedule_doctor", data);
+};
+let getAllSchedule = (doctorId, date) => {
+  return axios.get(`/api/get_All_Schedule?doctorId=${doctorId}&date=${date}`);
+};
 
-export { getAlldoctorManage, saveInfoDoctorService, getInfoDoctorService };
+export {
+  getAlldoctorManage,
+  saveInfoDoctorService,
+  getInfoDoctorService,
+  saveScheduleDoctor,
+  getAllSchedule,
+};

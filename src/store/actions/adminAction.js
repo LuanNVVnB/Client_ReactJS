@@ -11,6 +11,7 @@ import {
   getAlldoctorManage,
   saveInfoDoctorService,
   getInfoDoctorService,
+  getAllSchedule,
 } from "../../services/doctorService";
 
 import { toast } from "react-toastify";
@@ -317,7 +318,7 @@ export const fetchOneDoctorSuccess = (doctor) => ({
 export const fetchOneDoctorFaided = () => ({
   type: actionTypes.FETCH_ONE_DOCTOR_FAILDED,
 });
-// 1.CREATE ACTION GENDER FOR DOM
+// 13.CREATE ACTION GENDER FOR DOM
 export const fetchTimeStart = () => {
   return async (dispatch) => {
     try {
@@ -341,4 +342,28 @@ export const fetchTimeSuccess = (timeData) => ({
 });
 export const fetchTimeFaided = () => ({
   type: actionTypes.FETCH_TIME_FAIDED,
+});
+//14. fetch all schedule for doctor
+export const fetchAllscheduleStart = (doctorId, date) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: actionTypes.FETCH_ALL_SCHEDULE_START });
+      let res = await getAllSchedule(doctorId, date);
+      console.log("res: ", res);
+      if (res && res.errcode === 0) {
+        dispatch(fetchAllscheduleSuccess(res));
+      } else {
+        dispatch(fetchAllscheduleFaided());
+      }
+    } catch (e) {
+      dispatch(fetchAllscheduleFaided());
+    }
+  };
+};
+export const fetchAllscheduleSuccess = (data) => ({
+  type: actionTypes.FETCH_ALL_SCHEDULE_SUCCESS,
+  data: data,
+});
+export const fetchAllscheduleFaided = () => ({
+  type: actionTypes.FETCH_ALL_SCHEDULE_FAIDED,
 });

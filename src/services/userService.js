@@ -26,6 +26,7 @@ let getAllcodeService = (datatype) => {
 let getAlldoctorService = (dataLimit) => {
   return axios.get(`/api/top_doctor?limit=${dataLimit}`, { limit: dataLimit });
 };
+
 export {
   handleLoginApi,
   getAlluser,

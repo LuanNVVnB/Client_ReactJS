@@ -18,6 +18,9 @@ const initialState = {
   doctors: [], //display in client
   Alldoctor: [], //display server
   doctor: [], //doctor is searched
+
+  //schedule for doctor
+  schedule: [],
 };
 
 const adminReducer = (state = initialState, action) => {
@@ -241,7 +244,7 @@ const adminReducer = (state = initialState, action) => {
       return {
         ...state,
       };
-    // 1.actions for Time
+    // 13.actions for Time
     case actionTypes.FETCH_TIME_START:
       state.isLoading = true;
       return {
@@ -255,6 +258,24 @@ const adminReducer = (state = initialState, action) => {
         ...state,
       };
     case actionTypes.FETCH_TIME_FAIDED:
+      state.isLoading = false;
+      return {
+        ...state,
+      };
+    // 14.actions get all schedule for doctor in client
+    case actionTypes.FETCH_ALL_SCHEDULE_START:
+      state.isLoading = true;
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_ALL_SCHEDULE_SUCCESS:
+      //add data to API for state of reducer
+      state.schedule = action.data.data;
+      state.isLoading = false;
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_ALL_SCHEDULE_FAIDED:
       state.isLoading = false;
       return {
         ...state,

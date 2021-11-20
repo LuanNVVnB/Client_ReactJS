@@ -10,6 +10,7 @@ import DatePicker from "../../../components/Input/DatePicker";
 import moment from "moment";
 import _ from "lodash";
 import { toast } from "react-toastify";
+import { saveScheduleDoctor } from "../../../services/doctorService";
 
 // Finish!
 
@@ -59,26 +60,31 @@ class Medical extends Component {
     return newstr;
   };
 
-  handleOnlicksave = () => {
+  handleOnlicksave = async () => {
     let { currentData, selectTimes } = this.state;
     let { userInfo } = this.props;
     let result = [];
-
     if (selectTimes && selectTimes.length > 0) {
       selectTimes = selectTimes.filter((item) => item.isSelected == true);
-    }
-    if (selectTimes.length > 0 && currentData) {
-      let dateselected = moment(currentData[0]).format("MM/DD/YYYY");
-      selectTimes.map((item) => {
-        let object = {};
-        object.idDoctor = userInfo.id;
-        object.date = dateselected;
-        object.time = item.keyMap;
-        result.push(object);
-      });
-      toast.success("sucess");
+      if (selectTimes.length > 0 && currentData) {
+        let dateselected = moment(currentData[0]).format("YYYY-MM-DD");
+        // let dateselected = new Date(currentData[1]).getTime();
+        selectTimes.map((item) => {
+          let object = {};
+          object.doctorId = userInfo.id;
+          object.date = dateselected;
+          object.timeType = item.keyMap;
+          result.push(object);
+        });
+        console.log(typeof result[0].idDoctor);
+        let res = await saveScheduleDoctor({
+          arrSchedule: result,
+        });
+        if (res && res.errorcode == 0) toast.success("save sucess");
+        else toast.error("faild");
+      }
     } else toast.error("time didn't select");
-    console.log("result: ", result);
+    console.log(result.date);
   };
   render() {
     const { selectTimes } = this.state;
@@ -87,7 +93,6 @@ class Medical extends Component {
       <Fragment>
         <h1>Doctor</h1>
         <DatePicker
-          format={"MM-dd-yyyy"}
           onChange={(date) => this.handleOnchangeDatePicker(date)}
           selected={this.state.currentData}
           minDate={new Date()}
