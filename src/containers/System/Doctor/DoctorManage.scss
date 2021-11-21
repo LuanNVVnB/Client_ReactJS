@@ -1,0 +1,19 @@
+.selected-doctor {
+    width  : 100%;
+    display: flex;
+
+
+    .search-doctor {
+        width  : 50%;
+        display: flex;
+
+        .item-search {
+            width       : 60% !important;
+            margin-right: 20px;
+            i {
+                
+            }
+        }
+    }
+
+}

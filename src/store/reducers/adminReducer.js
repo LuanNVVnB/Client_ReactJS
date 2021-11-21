@@ -4,6 +4,9 @@ const initialState = {
   genders: [],
   roleId: [],
   positionId: [],
+  price: [],
+  pay: [],
+  province: [],
   times: [],
   isLoading: false,
 
@@ -34,7 +37,6 @@ const adminReducer = (state = initialState, action) => {
     case actionTypes.FETCH_GENDER_SUCCESS:
       //add data to API for state of reducer
       state.genders = action.data.data;
-      console.log("action", action.data.data);
       state.isLoading = false;
       return {
         ...state,
@@ -280,7 +282,60 @@ const adminReducer = (state = initialState, action) => {
       return {
         ...state,
       };
-
+    // 15.actions for Price
+    case actionTypes.FETCH_PRICE_START:
+      state.isLoading = true;
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_PRICE_SUCCESS:
+      //add data to API for state of reducer
+      state.price = action.data.data;
+      state.isLoading = false;
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_PRICE_FAIDED:
+      state.isLoading = false;
+      return {
+        ...state,
+      };
+    // 16.actions for Pay
+    case actionTypes.FETCH_PAY_START:
+      state.isLoading = true;
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_PAY_SUCCESS:
+      //add data to API for state of reducer
+      state.pay = action.data.data;
+      state.isLoading = false;
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_PAY_FAIDED:
+      state.isLoading = false;
+      return {
+        ...state,
+      };
+    // 17.actions for Province
+    case actionTypes.FETCH_PROVINCE_START:
+      state.isLoading = true;
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_PROVINCE_SUCCESS:
+      //add data to API for state of reducer
+      state.province = action.data.data;
+      state.isLoading = false;
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_PROVINCE_FAIDED:
+      state.isLoading = false;
+      return {
+        ...state,
+      };
     default:
       return state;
   }

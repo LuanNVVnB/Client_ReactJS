@@ -80,7 +80,7 @@ class Medical extends Component {
         let res = await saveScheduleDoctor({
           arrSchedule: result,
         });
-        if (res && res.errorcode == 0) toast.success("save sucess");
+        if (res && res.errcode === 0) toast.success("save sucess");
         else toast.error("faild");
       }
     } else toast.error("time didn't select");

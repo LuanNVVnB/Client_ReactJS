@@ -17,23 +17,25 @@ class DoctorModel extends Component {
     this.state = {
       detailDoctor: [],
       arrDays: [],
-      isbreak: false,
+      isSchedule: false,
     };
   }
   componentDidMount() {
     let { language } = this.props;
     this.DaysSelect(language);
-    // this.props.fetchAllscheduleStart(this.state.detailDoctor, new Date());
     this.setState({
       detailDoctor: this.props.detailDoctor,
+      isSchedule: false,
     });
   }
   toggle = () => {
     this.props.toggleModal();
-    this.setState({
-      isbreak: true,
-    });
   };
+  componentDidUpdate(prevProps) {
+    if (prevProps.detailDoctor.id != this.props.detailDoctor.id) {
+      this.props.schedule = [];
+    }
+  }
   DaysSelect = (language) => {
     let arrDays = [];
     for (let i = 0; i < 7; i++) {
@@ -60,11 +62,14 @@ class DoctorModel extends Component {
       this.props.detailDoctor.id,
       event.target.value
     );
+    this.setState({
+      isSchedule: true,
+    });
   };
   render() {
     let Doctor = this.state.detailDoctor;
     const detailDoctor = Doctor.Detail ? Doctor.Detail.contentHTML : "";
-    let { arrDays, isbreak } = this.state;
+    let { arrDays, isSchedule } = this.state;
     let { schedule } = this.props;
 
     return (
@@ -110,23 +115,22 @@ class DoctorModel extends Component {
                       })}
                   </select>
                   {schedule &&
-                    isbreak == false &&
                     schedule.length > 0 &&
                     schedule.map((item, index) => {
-                      return (
-                        <button
-                          className={
-                            "btn-times " +
-                            (item.isSelected == true ? "active" : "")
-                          }
-                          key={index}
-                        >
-                          {item.timeTypeData &&
-                          this.props.language === LANGUAGE.VI
-                            ? item.timeTypeData.valueVi
-                            : item.timeTypeData.valueEn}
-                        </button>
-                      );
+                      if (item.timeTypeData && isSchedule == true)
+                        return (
+                          <button
+                            className={
+                              "btn-times " +
+                              (item.isSelected == true ? "active" : "")
+                            }
+                            key={index}
+                          >
+                            {this.props.language === LANGUAGE.VI
+                              ? item.timeTypeData.valueVi
+                              : item.timeTypeData.valueEn}
+                          </button>
+                        );
                     })}
                 </div>
                 <Button></Button>

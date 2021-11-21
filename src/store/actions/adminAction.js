@@ -367,3 +367,78 @@ export const fetchAllscheduleSuccess = (data) => ({
 export const fetchAllscheduleFaided = () => ({
   type: actionTypes.FETCH_ALL_SCHEDULE_FAIDED,
 });
+// 15.CREATE ACTION PRICE FOR DOM
+export const fetchPriceStart = () => {
+  return async (dispatch) => {
+    try {
+      //dispatch api for reducer
+      dispatch({ type: actionTypes.FETCH_PRICE_START });
+      let res = await getAllcodeService("PRICE");
+
+      if (res && res.errcode === 0) {
+        dispatch(fetchPriceSuccess(res));
+      } else {
+        dispatch(fetchPriceFaided());
+      }
+    } catch (e) {
+      dispatch(fetchPriceFaided());
+    }
+  };
+};
+export const fetchPriceSuccess = (priceData) => ({
+  type: actionTypes.FETCH_PRICE_SUCCESS,
+  data: priceData,
+});
+export const fetchPriceFaided = () => ({
+  type: actionTypes.FETCH_PRICE_FAIDED,
+});
+// 16.CREATE ACTION PAY FOR DOM
+export const fetchPayStart = () => {
+  return async (dispatch) => {
+    try {
+      //dispatch api for reducer
+      dispatch({ type: actionTypes.FETCH_PAY_START });
+      let res = await getAllcodeService("PAYMENT");
+
+      if (res && res.errcode === 0) {
+        dispatch(fetchPaySuccess(res));
+      } else {
+        dispatch(fetchPayFaided());
+      }
+    } catch (e) {
+      dispatch(fetchPayFaided());
+    }
+  };
+};
+export const fetchPaySuccess = (payData) => ({
+  type: actionTypes.FETCH_PAY_SUCCESS,
+  data: payData,
+});
+export const fetchPayFaided = () => ({
+  type: actionTypes.FETCH_PAY_FAIDED,
+});
+// 17.CREATE ACTION PROVINCE FOR DOM
+export const fetchProvinceStart = () => {
+  return async (dispatch) => {
+    try {
+      //dispatch api for reducer
+      dispatch({ type: actionTypes.FETCH_PROVINCE_START });
+      let res = await getAllcodeService("PROVINCE");
+
+      if (res && res.errcode === 0) {
+        dispatch(fetchProvinceSuccess(res));
+      } else {
+        dispatch(fetchProvinceFaided());
+      }
+    } catch (e) {
+      dispatch(fetchProvinceFaided());
+    }
+  };
+};
+export const fetchProvinceSuccess = (provinceData) => ({
+  type: actionTypes.FETCH_PROVINCE_SUCCESS,
+  data: provinceData,
+});
+export const fetchProvinceFaided = () => ({
+  type: actionTypes.FETCH_PROVINCE_FAIDED,
+});
