@@ -68,7 +68,7 @@ class Medical extends Component {
       selectTimes = selectTimes.filter((item) => item.isSelected == true);
       if (selectTimes.length > 0 && currentData) {
         let dateselected = moment(currentData[0]).format("YYYY-MM-DD");
-        // let dateselected = new Date(currentData[1]).getTime();
+        // let dateselected = new Date(currentData[0]).getTime();
         selectTimes.map((item) => {
           let object = {};
           object.doctorId = userInfo.id;

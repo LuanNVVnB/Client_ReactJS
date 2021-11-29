@@ -5,16 +5,7 @@ import * as actions from "../../../store/actions";
 import "./UserReduxTable.scss";
 
 // import { Button, Modal } from "reactstrap";
-import {
-  FormGroup,
-  Row,
-  Col,
-  Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-} from "reactstrap";
+import { Button, Table } from "react-bootstrap";
 class UserReduxTable extends Component {
   constructor(props) {
     super(props);
@@ -52,18 +43,23 @@ class UserReduxTable extends Component {
     return (
       <Fragment>
         <div className="text-center">
-          <table className="table">
-            <thead className="thead-dark">
-              <tr className="table-danger">
-                <th scope="col">STT</th>
-                <th scope="col">Email</th>
-                <th scope="col">First name</th>
-                <th scope="col">Last name</th>
-                <th scope="col">Address</th>
-                <th scope="col">Gender</th>
-                <th scope="col">Role</th>
-                <th scope="col">Position</th>
-                <th scope="col">Actions</th>
+          <Table striped bordered hover>
+            <thead>
+              <tr
+                style={{
+                  background: "#553D67",
+                  color: "#fff",
+                }}
+              >
+                <th>STT</th>
+                <th>Email</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Address</th>
+                <th>Gender</th>
+                <th>Role</th>
+                <th>Position</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -82,26 +78,39 @@ class UserReduxTable extends Component {
                       <td>{item.positionId}</td>
 
                       <td>
-                        <button
+                        <Button
+                          style={{
+                            paddingBottom: "10px !important",
+                            height: "40px",
+                            marginLeft: "5px !important",
+                          }}
+                          variant="outline-warning"
+                          value="edit"
                           onClick={() => {
                             this.handeleUpdate({ item });
                           }}
                         >
                           Edit
-                        </button>
-                        <button
+                        </Button>
+                        <Button
+                          style={{
+                            paddingBottom: "10px !important",
+                            height: "40px",
+                          }}
+                          variant="outline-danger"
+                          value="edit"
                           onClick={() => {
                             this.handeleDelete({ item });
                           }}
                         >
                           Delete
-                        </button>
+                        </Button>
                       </td>
                     </tr>
                   );
                 })}
             </tbody>
-          </table>
+          </Table>
         </div>
       </Fragment>
     );

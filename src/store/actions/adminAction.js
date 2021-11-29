@@ -300,7 +300,6 @@ export const fetchOneDoctorStart = (idData) => {
     try {
       dispatch({ type: actionTypes.FETCH_ONE_DOCTOR_START });
       let res = await getInfoDoctorService(idData);
-
       if (res && res.errcode === 0) {
         dispatch(fetchOneDoctorSuccess(res));
       } else {

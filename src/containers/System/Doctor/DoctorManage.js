@@ -61,6 +61,7 @@ class DoctorMange extends Component {
         let Allcode = {};
         let labelVi = item.valueVi;
         let labelEn = item.valueEn;
+
         Allcode.label = language === LANGUAGE.VI ? labelVi : labelEn;
         Allcode.value = item.id;
         result.push(Allcode);
@@ -181,9 +182,7 @@ class DoctorMange extends Component {
     }
   };
   handleSearchDoctor = () => {
-    console.log("select: ", this.state.selectedDoctor.value);
     this.props.fetchOneDoctorStart(this.state.selectedDoctor.value);
-    console.log("doctor:", this.props.doctor);
   };
 
   checkValideInput = () => {

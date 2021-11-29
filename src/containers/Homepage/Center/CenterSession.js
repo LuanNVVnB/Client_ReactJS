@@ -10,6 +10,7 @@ import { LANGUAGE } from "../../../utils";
 import { chengeLanguageApp } from "../../../store/actions";
 import DoctorModel from "./DoctorModel";
 
+
 class CenterSession extends Component {
   constructor(props) {
     super(props);
@@ -43,7 +44,6 @@ class CenterSession extends Component {
 
   render() {
     let newdoctors = this.props.newDoctors;
-
     let settings = {
       dots: false,
       infinite: false,
@@ -107,65 +107,22 @@ class CenterSession extends Component {
                       <span>
                         {" "}
                         {this.props.language === LANGUAGE.VI
-                          ? item.firstName + item.lastName
-                          : item.lastName + item.firstName}
+                          ? item.firstName + " " + item.lastName + " "
+                          : item.lastName + " " + item.firstName + " "}
                       </span>
 
                       <span>
+                        (
                         {this.props.language === LANGUAGE.VI
                           ? item.positionData.valueVi
                           : item.positionData.valueEn}
+                        )
                       </span>
                     </div>
+                    
                   </div>
                 );
               })}
-
-            {/* <div className="slick-item">
-              <a href="#">
-                <img src="https://www.onekeydata.com/images/uploads/opening/doctor_emails.png" />
-              </a>{" "}
-            </div>
-            <div className="slick-item">
-              <a href="#">
-                <img src="https://www.healthecareers.com/binaries/content/gallery/healthecareers-us-en/article-features/2019/retireddoctor.jpg" />
-              </a>{" "}
-            </div>
-            <div className="slick-item">
-              <a href="#">
-                <img src="https://forum.facmedicine.com/attachments/aba743607270cd81e7e36d064ffffab7-_-jpg.19083/" />
-              </a>{" "}
-            </div>
-            <div className="slick-item">
-              <a href="#">
-                <img src="https://images.squarespace-cdn.com/content/v1/561feb4ee4b0de0eb30d6d3c/1547850788658-Q2DK9SKK3KVSM1QMVF21/femaledoctor.png?format=1500w" />
-              </a>{" "}
-            </div>
-            <div className="slick-item">
-              <a href="#">
-                <img src="https://www.guelphfht.com/wp-content/uploads/2015/09/Female-Doctor-300x279.jpg" />
-              </a>{" "}
-            </div>
-            <div className="slick-item">
-              <a href="#">
-                <img src="https://ak.picdn.net/shutterstock/videos/4520843/thumb/2.jpg" />
-              </a>{" "}
-            </div>
-            <div className="slick-item">
-              <a href="#">
-                <img src="https://joanna678s.files.wordpress.com/2015/03/doctor.jpg" />
-              </a>{" "}
-            </div>
-            <div className="slick-item">
-              <a href="#">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQftj1a4PyZZBfQv_B5mWWE_qzlkSrfTpfvGugcQIBAzIvv30o9zrUxMMlFC3kOdGnF0tM&usqp=CAU" />
-              </a>{" "}
-            </div>
-            <div className="slick-item">
-              <a href="#">
-                <img src="https://www.riglocums.com/wp-content/uploads/2016/01/UK-Medical-staff.jpg" />
-              </a>{" "}
-            </div> */}
           </Slider>
         </div>
       </Fragment>

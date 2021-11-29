@@ -4,7 +4,8 @@ import { Route, Switch } from "react-router-dom";
 import { ConnectedRouter as Router } from "connected-react-router";
 import { history } from "../redux";
 import { ToastContainer } from "react-toastify";
-
+import { DoctorDetail } from "./Homepage/Center/DoctorDetail";
+import Booking from "./Homepage/Center/BookingDoctor";
 import {
   userIsAuthenticated,
   userIsNotAuthenticated,
@@ -21,6 +22,7 @@ import CustomScrollbars from "../components/CustomScrollbars";
 
 import HomePage from "./Homepage/HomePage.js";
 import CustomToastCloseButton from "../components/CustomToast";
+
 // import ConfirmModal from "../components/ConfirmModal";
 
 class App extends Component {
@@ -51,6 +53,7 @@ class App extends Component {
             <span className="content-container">
               <Switch>
                 <Route path={path.HOME} exact component={Home} />
+
                 <Route
                   path={path.LOGIN}
                   component={userIsNotAuthenticated(Login)}
@@ -63,6 +66,8 @@ class App extends Component {
 
                 <CustomScrollbars style={{ height: "100vh", width: "100%" }}>
                   <Route path={path.HOMEPAGE} component={HomePage} />
+                  <Route path={path.DOCTOR} exact component={DoctorDetail} />
+                  <Route path={path.BOOKING} exact component={Booking} />
                 </CustomScrollbars>
               </Switch>
             </span>

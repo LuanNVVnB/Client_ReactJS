@@ -9,8 +9,10 @@ class Home_header extends Component {
   changeLanguage = (language) => {
     this.props.changelanguageAppRedux(language);
   };
+  componentDidMount() {}
 
   render() {
+    console.log("type ", typeof this.props.language);
     return (
       <Fragment>
         <div className="header">
