@@ -14,7 +14,8 @@ const actionTypes = Object.freeze({
   CLIENT_LOGIN_SUCCESS: "CLIENT_LOGIN_SUCCESS",
   CLIENT_LOGIN_FAIL: "CLIENT_LOGIN_FAIL",
   PROCESS_LOGOUT_CLIENT: "PROCESS_LOGOUT_CLIENT",
-  //
+  //action singe
+  BOOKING_START: "BOOKING_START",
 
   //admin
   // 1. Gender

@@ -30,3 +30,8 @@ export const clientLoginSuccess = (clientInfo) => ({
   type: actionTypes.CLIENT_LOGIN_SUCCESS,
   clientInfo: clientInfo,
 });
+
+//BOOKING
+export const BookingStart = () => ({
+  type: actionTypes.BOOKING_START,
+});

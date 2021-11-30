@@ -1,9 +1,9 @@
 .user-redux {
     display: flex;
 
-    justify-content: space-around;
 
     .avatar-form {
+
         width : 320px;
         margin: 20px;
 
@@ -20,17 +20,31 @@
         }
     }
 
-    .form-doctor {
-        border : solid 1px red;
-        padding: 20px;
-        margin : 20px;
-        left   : 0px;
+    .center-form {
+        background-color: #fff;
+        border-radius   : 10px;
+        box-shadow      : 0 14px 28px rgba(0, 0, 0, 0.25),
+            0 10px 10px rgba(0, 0, 0, 0.22);
+        position : relative;
+        overflow : hidden;
+        width    : 970px;
+        max-width: 100%;
+        height   : 360px;
 
-        .preview-image {
-            width : 200px;
-            height: 50px;
-            border: solid 1px red;
+        .form-doctor {
+            padding: 20px;
+            margin : 20px;
+            left   : 0px;
+
+            .preview-image {
+                width : 200px;
+                height: 50px;
+                border: solid 1px red;
+            }
+
         }
 
     }
+
+
 }

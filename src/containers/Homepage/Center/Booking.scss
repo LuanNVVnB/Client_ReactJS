@@ -1,0 +1,101 @@
+.appointment {
+    background    : #f6f5f7;
+    display       : flex;
+    padding       : 20px;
+    align-items   : center;
+    flex-direction: column;
+    font-family   : 'Montserrat', sans-serif;
+    height        : 100vh;
+    margin        : 20px 0 50px;
+
+
+    .form-booking {
+        background-color: #fff;
+        box-shadow      : 0 14px 28px rgba(0, 0, 0, 0.25),
+            0 10px 10px rgba(0, 0, 0, 0.22);
+        position  : relative;
+        overflow  : hidden;
+        width     : 1200px;
+        max-width : 100%;
+        min-height: 680px;
+
+        // background-image : url("https://image.freepik.com/free-photo/front-view-doctor-smiling-with-copy-space_23-2148728410.jpg");
+        // background-repeat: no-repeat;
+        // background-size  : cover;
+
+        .form-booking_center {
+            background         : #3C97BF;
+            background         : -webkit-linear-gradient(to right, #3C97BF, #3C97BF);
+            background         : linear-gradient(to right, #3C97BF, #3C97BF);
+            background-repeat  : no-repeat;
+            background-size    : cover;
+            background-position: 0 0;
+            color              : #FFFFFF;
+            position           : relative;
+            width              : 65%;
+            height             : 100%;
+            padding            : 10px;
+        }
+
+        .booking-title {
+            margin-top   : 20px;
+            text-align   : center;
+            font-size    : 24px;
+            margin-bottom: 30px;
+        }
+
+        .apeticaty {
+
+            display        : flex;
+            align-items    : center;
+            justify-content: center;
+            text-align     : center;
+            margin-bottom  : 10px;
+
+            label {
+                font-size: 12px;
+                width    : 20%;
+            }
+
+            input {
+                background-color: #eee;
+                border          : none;
+                padding         : 12px 15px;
+                margin          : 1%;
+                width           : 100%;
+            }
+
+        }
+
+
+    }
+
+    footer {
+
+        bottom          : 10px;
+        background-color: #222;
+        color           : #fff;
+        font-size       : 14px;
+        bottom          : 0;
+        position        : fixed;
+        left            : 0;
+        right           : 0;
+        text-align      : center;
+        z-index         : 999;
+
+        p {
+            margin: 10px 0;
+
+            i {
+                color: #3c97bf;
+            }
+
+            a {
+                color          : #3c97bf;
+                text-decoration: none;
+            }
+        }
+
+    }
+
+}

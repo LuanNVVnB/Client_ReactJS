@@ -5,6 +5,7 @@ const initialState = {
   isLoginClient: false,
   userInfo: null,
   clientInfo: null,
+  bookingAction: false,
 };
 
 const appReducer = (state = initialState, action) => {
@@ -45,6 +46,11 @@ const appReducer = (state = initialState, action) => {
         ...state,
         isLoginClient: false,
         clientInfo: null,
+      };
+    case actionTypes.BOOKING_START:
+      return {
+        ...state,
+        bookingAction: true,
       };
     default:
       return state;

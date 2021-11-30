@@ -46,7 +46,6 @@ class System extends Component {
           </div>
           <div className="center-system">
             {this.props.isLoggedIn && <Header />}
-
             <div className="system-list">
               <Switch>
                 <Route path="/system/user-System" component={ProductManage} />

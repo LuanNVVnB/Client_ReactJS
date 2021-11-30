@@ -72,6 +72,7 @@ class DoctorModel extends Component {
   };
   handeleOnClickBooking = () => {
     this.toggle();
+    this.props.BookingStart();
   };
   render() {
     let Doctor = this.state.detailDoctor;
@@ -272,6 +273,7 @@ const mapStateToProps = (state) => {
     schedule: state.admin.schedule,
     isLoginClient: state.user.isLoginClient,
     clientInfo: state.user.clientInfo,
+    bookingAction: state.user.bookingAction,
   };
 };
 
@@ -280,6 +282,7 @@ const mapDispatchToProps = (dispatch) => {
     fetchAllscheduleStart: (doctorId, date) =>
       dispatch(actions.fetchAllscheduleStart(doctorId, date)),
     changelanguageAppRedux: (language) => dispatch(chengeLanguageApp(language)),
+    BookingStart: () => dispatch(actions.BookingStart()),
   };
 };
 

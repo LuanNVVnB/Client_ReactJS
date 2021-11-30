@@ -144,13 +144,22 @@ table {
 //scss for Home_header
 
 .header {
-  position       : relative;
-  display        : flex;
-  justify-content: space-between;
-  width          : 100%;
-  height         : 60px;
-  font-size      : 20px;
-  padding        : 10px;
+  position        : relative;
+  display         : flex;
+  justify-content : space-between;
+  width           : 100%;
+  height          : 60px;
+  padding         : 10px;
+  background      : #fff;
+  background-color: #222;
+  color           : #fff;
+  font-size       : 14px;
+  top             : 0;
+  position        : fixed;
+  left            : 0;
+  right           : 0;
+  text-align      : center;
+  z-index         : 999;
 
   .header-item {
     display        : flex;
@@ -165,6 +174,10 @@ table {
       justify-content: center;
       width          : 5%;
       margin-right   : 10px;
+      color          : #3c97bf;
+
+
+
     }
 
     .header-logo {
@@ -175,18 +188,18 @@ table {
       font-size      : 20px;
 
       .name_logo {
-        color          : #0f00ff;
+        color          : #3c97bf;
         display        : flex;
         justify-content: center;
 
         span {
-          color  : #000;
+          color  : #FFF;
           display: block;
           width  : 70px;
           left   : 0px;
 
           i {
-            color : #4743ff;
+            color : #3c97bf;
             margin: -15px 5px 0px 70px;
           }
         }
@@ -207,7 +220,7 @@ table {
       }
 
       &.active {
-        background-color: #0f00ff;
+        background-color: #3c97bf;
         color           : white;
         border-radius   : 10px 0 10px 10px;
         padding         : 5px 10px 5px 10px;
@@ -215,12 +228,15 @@ table {
     }
 
     a {
-      margin: 0 20px 0 20px;
-      color : #000;
+      margin         : 0 20px 0 20px;
+      color          : #3c97bf;
+      text-decoration: none;
+
     }
 
     i {
       margin-left: 20px;
+      color      : #3c97bf;
     }
   }
 }

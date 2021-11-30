@@ -5,7 +5,7 @@ export const path = {
   LOG_OUT: "/logout",
   SYSTEM: "/system",
   DOCTOR: "/doctor",
-  BOOKING: "/booking",
+  BOOKING: "/home/booking",
   LOGINCLIENT: "/loginname",
 };
 
