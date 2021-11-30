@@ -6,7 +6,7 @@ import { FormattedMessage } from "react-intl";
 import * as actions from "../../../store/actions";
 import { LANGUAGE } from "../../../utils";
 import { chengeLanguageApp } from "../../../store/actions";
-
+import { withRouter } from "react-router";
 // import { Button, Modal } from "reactstrap";
 import { Modal, ModalBody, ModalFooter } from "reactstrap";
 import { Button } from "react-bootstrap";
@@ -70,12 +70,14 @@ class DoctorModel extends Component {
       isSchedule: true,
     });
   };
-  handleBooking = () => {};
+  handeleOnClickBooking = () => {
+    this.toggle();
+  };
   render() {
     let Doctor = this.state.detailDoctor;
     const detailDoctor = Doctor.Detail ? Doctor.Detail : "";
     let { arrDays, isSchedule } = this.state;
-    let { schedule } = this.props;
+    let { schedule, isLoginClient, clientInfo } = this.props;
 
     return (
       <Fragment>
@@ -242,18 +244,22 @@ class DoctorModel extends Component {
               </div>
             </div>
           </ModalBody>
-          <ModalFooter>
-            <Link
-              to={{
-                pathname: `/booking`,
-                state: {
-                  doctor: Doctor,
-                },
-              }}
-            >
-              Booking
-            </Link>
-          </ModalFooter>
+          {isLoginClient === false ? (
+            ""
+          ) : (
+            <ModalFooter>
+              <Link
+                to={{
+                  pathname: `/loginname`,
+                  state: {
+                    doctor: Doctor,
+                  },
+                }}
+              >
+                Booking
+              </Link>
+            </ModalFooter>
+          )}
         </Modal>
       </Fragment>
     );
@@ -264,6 +270,8 @@ const mapStateToProps = (state) => {
   return {
     language: state.app.language,
     schedule: state.admin.schedule,
+    isLoginClient: state.user.isLoginClient,
+    clientInfo: state.user.clientInfo,
   };
 };
 

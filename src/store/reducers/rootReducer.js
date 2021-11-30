@@ -23,14 +23,13 @@ const persistCommonConfig = {
 const userPersistConfig = {
   ...persistCommonConfig,
   key: "user",
-  whitelist: ["isLoggedIn", "userInfo"],
+  whitelist: ["isLoggedIn", "userInfo", "clientInfo", "isLoginClient"],
 };
 const appPersistConfig = {
   ...persistCommonConfig,
   key: "app",
-  whitelist: ["language"]
-}
-
+  whitelist: ["language"],
+};
 
 export default (history) =>
   combineReducers({
@@ -38,5 +37,5 @@ export default (history) =>
     // admin: persistReducer(adminPersistConfig, adminReducer),
     user: persistReducer(userPersistConfig, userReducer),
     app: persistReducer(appPersistConfig, appReducer),
-    admin: adminReducer
+    admin: adminReducer,
   });

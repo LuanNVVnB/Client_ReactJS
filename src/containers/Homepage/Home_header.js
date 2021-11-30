@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { FormattedMessage } from "react-intl";
 import { LANGUAGE } from "../../utils";
 import { chengeLanguageApp } from "../../store/actions";
+import { Link } from "react-router-dom";
 
 class Home_header extends Component {
   changeLanguage = (language) => {
@@ -12,6 +13,7 @@ class Home_header extends Component {
   componentDidMount() {}
 
   render() {
+    let { clientInfo } = this.props;
     console.log("type ", typeof this.props.language);
     return (
       <Fragment>
@@ -55,6 +57,13 @@ class Home_header extends Component {
                 <FormattedMessage id={"homeheader.support"} />
               </i>
             </a>
+            <div className="avatar-user">
+              {clientInfo && clientInfo !== null ? (
+                `Hello ! ${this.props.clientInfo.firstName}`
+              ) : (
+                <Link to="/loginname">Login</Link>
+              )}
+            </div>
           </div>
         </div>
         <div className="header-navbar">
@@ -95,8 +104,9 @@ class Home_header extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    isLoggedIn: state.user.isLoggedIn,
+    isLoginClient: state.user.isLoginClient,
     language: state.app.language,
+    clientInfo: state.user.clientInfo,
   };
 };
 

@@ -1,21 +1,25 @@
 import React, { Component, Fragment } from "react";
-import "./BookingDoctor.scss";
+import "./LoginClient.scss";
 
 import { connect } from "react-redux";
-import { FormattedMessage } from "react-intl";
+// import { FormattedMessage } from "react-intl";
 import * as actions from "../../../store/actions";
-import { LANGUAGE } from "../../../utils";
+// import { LANGUAGE } from "../../../utils";
+import { handleLoginApi } from "../../../services/userService";
 import { chengeLanguageApp } from "../../../store/actions";
 
 // import { Button, Modal } from "reactstrap";
 
-import "./BookingDoctor.scss";
+import "./LoginClient.scss";
 
-class BookingDoctor extends Component {
+class LoginClient extends Component {
   constructor(props) {
     super(props);
     this.state = {
       signup: false,
+      email: "",
+      password: "",
+      errMessage: "",
     };
   }
   componentDidMount() {}
@@ -23,6 +27,53 @@ class BookingDoctor extends Component {
     this.setState({
       signup: !this.state.signup,
     });
+  };
+
+  handleonchangeUsername = (event) => {
+    this.setState({
+      email: event.target.value,
+    });
+  };
+  handleonchangePassword = (event) => {
+    this.setState({
+      password: event.target.value,
+    });
+  };
+
+  handleLogin = async () => {
+    this.setState({
+      errMessage: "",
+    });
+
+    try {
+      let data = await handleLoginApi(this.state.email, this.state.password);
+      if (data && data.errcode !== 0) {
+        this.setState({
+          errMessage: data.message,
+        });
+      }
+      if (data && data.errcode === 0) {
+        console.log(data);
+        this.props.clientLoginSuccess(data.user);
+      }
+    } catch (error) {
+      if (error.response) {
+        if (error.response.data) {
+          this.setState({
+            errMessage: error.response.data.message,
+          });
+        }
+      }
+    }
+  };
+
+  handleKeyDown = (event) => {
+    if (
+      event.key === "Enter" ||
+      (event.keyCode === 13 && this.state.email !== "")
+    ) {
+      this.handleLogin();
+    }
   };
 
   render() {
@@ -40,7 +91,7 @@ class BookingDoctor extends Component {
             id="container"
           >
             <div className="form-container sign-up-container">
-              <form action="#">
+              <div className="form">
                 <h1>Create Account</h1>
                 <div className="social-container">
                   <a href="#" className="social">
@@ -58,10 +109,10 @@ class BookingDoctor extends Component {
                 <input type="email" placeholder="Email" />
                 <input type="password" placeholder="Password" />
                 <button>Sign Up</button>
-              </form>
+              </div>
             </div>
             <div className="form-container sign-in-container">
-              <form action="#">
+              <div className="form">
                 <h1>Sign in</h1>
                 <div className="social-container">
                   <a href="#" className="social">
@@ -75,11 +126,31 @@ class BookingDoctor extends Component {
                   </a>
                 </div>
                 <span>or use your account</span>
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  value={this.state.email}
+                  onChange={(event) => this.handleonchangeUsername(event)}
+                />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  onChange={(event) => this.handleonchangePassword(event)}
+                  onKeyDown={(event) => this.handleKeyDown(event)}
+                />
                 <a href="#">Forgot your password?</a>
-                <button>Sign In</button>
-              </form>
+                <div className="col-12 error" style={{ color: "red" }}>
+                  {this.state.errMessage}
+                </div>
+                <button
+                  onClick={() => {
+                    this.handleLogin();
+                  }}
+                >
+                  {" "}
+                  Sign In
+                </button>
+              </div>
             </div>
             <div className="overlay-container">
               <div className="overlay">
@@ -145,10 +216,12 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    clientLoginSuccess: (userInfo) =>
+      dispatch(actions.clientLoginSuccess(userInfo)),
     fetchAllscheduleStart: (doctorId, date) =>
       dispatch(actions.fetchAllscheduleStart(doctorId, date)),
     changelanguageAppRedux: (language) => dispatch(chengeLanguageApp(language)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(BookingDoctor);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginClient);

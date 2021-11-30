@@ -5,7 +5,7 @@ import { ConnectedRouter as Router } from "connected-react-router";
 import { history } from "../redux";
 import { ToastContainer } from "react-toastify";
 import { DoctorDetail } from "./Homepage/Center/DoctorDetail";
-import Booking from "./Homepage/Center/BookingDoctor";
+import Booking from "./Homepage/Center/Booking";
 import {
   userIsAuthenticated,
   userIsNotAuthenticated,
@@ -15,13 +15,14 @@ import { path } from "../utils";
 
 import Home from "../routes/Home";
 import Login from "./LAR/Login";
-import Header from "./System/Header/Header";
+// import Header from "./System/Header/Header";
 import System from "../routes/System";
 
 import CustomScrollbars from "../components/CustomScrollbars";
 
 import HomePage from "./Homepage/HomePage.js";
-import CustomToastCloseButton from "../components/CustomToast";
+import LoginClient from "./Homepage/Center/LoginClient";
+// import CustomToastCloseButton from "../components/CustomToast";
 
 // import ConfirmModal from "../components/ConfirmModal";
 
@@ -68,6 +69,11 @@ class App extends Component {
                   <Route path={path.HOMEPAGE} component={HomePage} />
                   <Route path={path.DOCTOR} exact component={DoctorDetail} />
                   <Route path={path.BOOKING} exact component={Booking} />
+                  <Route
+                    path={path.LOGINCLIENT}
+                    exact
+                    component={LoginClient}
+                  />
                 </CustomScrollbars>
               </Switch>
             </span>

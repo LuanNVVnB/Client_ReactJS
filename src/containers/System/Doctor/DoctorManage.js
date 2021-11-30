@@ -61,9 +61,8 @@ class DoctorMange extends Component {
         let Allcode = {};
         let labelVi = item.valueVi;
         let labelEn = item.valueEn;
-
         Allcode.label = language === LANGUAGE.VI ? labelVi : labelEn;
-        Allcode.value = item.id;
+        Allcode.value = item.keyMap;
         result.push(Allcode);
       });
     }
