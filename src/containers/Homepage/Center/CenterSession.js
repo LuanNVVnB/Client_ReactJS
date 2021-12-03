@@ -10,7 +10,6 @@ import { LANGUAGE } from "../../../utils";
 import { chengeLanguageApp } from "../../../store/actions";
 import DoctorModel from "./DoctorModel";
 
-
 class CenterSession extends Component {
   constructor(props) {
     super(props);
@@ -119,7 +118,6 @@ class CenterSession extends Component {
                         )
                       </span>
                     </div>
-                    
                   </div>
                 );
               })}

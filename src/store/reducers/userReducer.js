@@ -6,6 +6,7 @@ const initialState = {
   userInfo: null,
   clientInfo: null,
   bookingAction: false,
+  doctorBook: [],
 };
 
 const appReducer = (state = initialState, action) => {
@@ -48,9 +49,11 @@ const appReducer = (state = initialState, action) => {
         clientInfo: null,
       };
     case actionTypes.BOOKING_START:
+      state.doctorBook = action.doctorBook;
+      console.log("doctor Bb: ", action.doctorBook);
+      state.bookingAction = true;
       return {
         ...state,
-        bookingAction: true,
       };
     default:
       return state;

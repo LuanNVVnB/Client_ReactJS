@@ -11,6 +11,7 @@ class UserReduxTable extends Component {
     super(props);
     this.state = {
       users: [],
+      isopen: false,
     };
   }
   componentDidMount() {
@@ -33,6 +34,9 @@ class UserReduxTable extends Component {
   handeleUpdate = async (IdUser) => {
     try {
       await this.props.fetchOneUserStart(IdUser.item.id);
+      this.setState({
+        isopen: true,
+      });
     } catch (e) {
       console.log(e);
     }
@@ -47,7 +51,7 @@ class UserReduxTable extends Component {
             <thead>
               <tr
                 style={{
-                  background: "#553D67",
+                  background: "#3C97BF",
                   color: "#fff",
                 }}
               >
@@ -56,9 +60,10 @@ class UserReduxTable extends Component {
                 <th>First name</th>
                 <th>Last name</th>
                 <th>Address</th>
-                <th>Gender</th>
                 <th>Role</th>
-                <th>Position</th>
+                {/* <th>Gender</th>
+               
+                <th>Position</th> */}
                 <th>Actions</th>
               </tr>
             </thead>
@@ -73,9 +78,10 @@ class UserReduxTable extends Component {
                       <td>{item.firstName}</td>
                       <td>{item.lastName}</td>
                       <td>{item.address}</td>
-                      <td>{item.gender}</td>
                       <td>{item.roleId}</td>
-                      <td>{item.positionId}</td>
+                      {/* <td>{item.gender}</td>
+                      
+                      <td>{item.positionId}</td> */}
 
                       <td>
                         <Button

@@ -1,4 +1,5 @@
 @import "../styles/common.scss";
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
 .system {
     display         : flex;
@@ -6,6 +7,7 @@
     background-color: $background2;
     width           : 100%;
     height          : 100%;
+    font-family     : 'Montserrat', sans-serif;
 
     .menu {
         background-color: antiquewhite;

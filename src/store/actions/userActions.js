@@ -32,6 +32,7 @@ export const clientLoginSuccess = (clientInfo) => ({
 });
 
 //BOOKING
-export const BookingStart = () => ({
+export const BookingStart = (doctorBook) => ({
   type: actionTypes.BOOKING_START,
+  doctorBook: doctorBook,
 });

@@ -7,7 +7,37 @@ import * as actions from "../../../store/actions";
 import { Button } from "react-bootstrap";
 
 export class Booking extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      fullName: "",
+      email: "",
+      date: "",
+      time: "",
+      phoneNumber: "",
+      address: "",
+    };
+  }
+  handleOnchangeInput = (event) => {
+    let { name, value } = event.target;
+    this.setState({
+      [name]: value,
+    });
+  };
+  componentDidUpdate(prevProps) {
+    if (prevProps.clientInfo !== this.props.clientInfo) {
+      let clientInfo = this.props.clientInfo;
+      this.setState({
+        fullName: clientInfo.firstName + " " + clientInfo.lastName,
+        email: clientInfo.email,
+        phoneNumber: clientInfo.phonenumber,
+        address: clientInfo.address,
+      });
+    }
+  }
   render() {
+    let { doctorBook, clientInfo } = this.props;
+    let { fullName, email, date, time, phoneNumber, address } = this.state;
     return (
       <Fragment>
         <div className="appointment">
@@ -18,26 +48,62 @@ export class Booking extends Component {
               </div>
               <div className="apeticaty">
                 <label>Patient's Full Name</label>
-                <input type="text" value></input>
+                <input
+                  onChange={(event) => this.handleOnchangeInput(event)}
+                  type="text"
+                  value={fullName}
+                  placeholder={clientInfo.firstName + " " + clientInfo.lastName}
+                  name="fullName"
+                ></input>
               </div>
               <div className="apeticaty">
                 <label>Patient's Email</label>
-                <input type="email" value></input>
+                <input
+                  onChange={() => this.handleOnchangeInput()}
+                  type="email"
+                  value={email}
+                  placeholder={clientInfo.email}
+                  name="email"
+                ></input>
               </div>
               <div className="apeticaty">
                 <label>Date Appointment</label>
-                <input type="text" value></input>
+                <input
+                  onChange={() => this.handleOnchangeInput()}
+                  type="text"
+                  value={date}
+                  placeholder={doctorBook.date}
+                  name="date"
+                ></input>
                 <label>Time Appointment</label>
-                <input type="text" value></input>
+                <input
+                  onChange={() => this.handleOnchangeInput()}
+                  type="text"
+                  value={time}
+                  placeholder={doctorBook.time}
+                  name="time"
+                ></input>
               </div>
 
               <div className="apeticaty">
                 <label>Mobile Number</label>
-                <input type="text" value></input>
+                <input
+                  onChange={() => this.handleOnchangeInput()}
+                  type="text"
+                  value={phoneNumber}
+                  placeholder="Phone Number"
+                  name="phoneNumber"
+                ></input>
               </div>
               <div className="apeticaty">
                 <label>Patient's Address</label>
-                <input type="text" value></input>
+                <input
+                  onChange={() => this.handleOnchangeInput()}
+                  type="text"
+                  value={address}
+                  placeholder="Address"
+                  name="address"
+                ></input>
               </div>
               <Button
                 style={{
@@ -77,6 +143,9 @@ export class Booking extends Component {
 const mapStateToProps = (state) => {
   return {
     isLoggedIn: state.user.isLoggedIn,
+    bookingAction: state.user.bookingAction,
+    doctorBook: state.user.doctorBook,
+    clientInfo: state.user.clientInfo,
   };
 };
 

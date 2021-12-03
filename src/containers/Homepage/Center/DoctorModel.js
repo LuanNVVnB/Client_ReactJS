@@ -22,6 +22,7 @@ class DoctorModel extends Component {
       arrDays: [],
       isSchedule: false,
       ismoney: false,
+      dateBook: "",
     };
   }
   componentDidMount() {
@@ -61,7 +62,7 @@ class DoctorModel extends Component {
     });
   };
   handleselectDays = async (event) => {
-    console.log(event.target.value);
+    this.setState({ dateBook: event.target.value });
     await this.props.fetchAllscheduleStart(
       this.props.detailDoctor.id,
       event.target.value
@@ -70,9 +71,16 @@ class DoctorModel extends Component {
       isSchedule: true,
     });
   };
-  handeleOnClickBooking = () => {
+  handeleOnClickBooking = (timeBook) => {
+    let doctorBook = this.props.detailDoctor;
+    let book = {};
+    book.date = this.state.dateBook;
+    book.time = timeBook.item.timeTypeData.valueEn;
+    book.nameDoctor = doctorBook.firstName;
+    book.money = doctorBook.Detail.priceData.valueEn;
+
     this.toggle();
-    this.props.BookingStart();
+    this.props.BookingStart(book);
   };
   render() {
     let Doctor = this.state.detailDoctor;
@@ -282,7 +290,7 @@ const mapDispatchToProps = (dispatch) => {
     fetchAllscheduleStart: (doctorId, date) =>
       dispatch(actions.fetchAllscheduleStart(doctorId, date)),
     changelanguageAppRedux: (language) => dispatch(chengeLanguageApp(language)),
-    BookingStart: () => dispatch(actions.BookingStart()),
+    BookingStart: (doctorBook) => dispatch(actions.BookingStart(doctorBook)),
   };
 };
 

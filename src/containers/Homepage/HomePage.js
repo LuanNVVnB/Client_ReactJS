@@ -12,7 +12,7 @@ class HomePage extends Component {
     super(props);
   }
   render() {
-    console.log("booking open: ", this.props.bookingAction);
+    console.log("booking object: ", this.props.doctorBook);
     return (
       <Fragment>
         <Home_header />
@@ -36,6 +36,7 @@ const mapStateToProps = (state) => {
   return {
     isLoggedIn: state.user.isLoggedIn,
     bookingAction: state.user.bookingAction,
+    doctorBook: state.user.doctorBook,
   };
 };
 
