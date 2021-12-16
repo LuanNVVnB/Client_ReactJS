@@ -28,6 +28,7 @@ const appReducer = (state = initialState, action) => {
         ...state,
         isLoggedIn: false,
         userInfo: null,
+        clientInfo: null,
       };
     //Client
     case actionTypes.CLIENT_LOGIN_SUCCESS:

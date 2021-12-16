@@ -59,4 +59,21 @@ export const doctorMenu = [
       },
     ],
   },
+  {
+    //hệ thống phong kham
+    name: "menu.system.menu-admin.specialized-management",
+  },
+  {
+    //hệ thống Quản lý đặt lịch
+    name: "menu.system.menu-admin.booking-management",
+  },
+  {
+    //hệ thống Quản lý phong kham
+    name: "menu.system.menu-admin.clinic-management",
+  },
+
+  {
+    //hệ thống Quản lý co so y te
+    name: "menu.system.menu-admin.medical-facility-management",
+  },
 ];

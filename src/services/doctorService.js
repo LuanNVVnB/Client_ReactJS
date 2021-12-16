@@ -18,6 +18,9 @@ let saveScheduleDoctor = (data) => {
 let getAllSchedule = (doctorId, date) => {
   return axios.get(`/api/get_All_Schedule?doctorId=${doctorId}&date=${date}`);
 };
+let sentBookingService = (data) => {
+  return axios.post("/api/sent_Booking", data);
+};
 
 export {
   getAlldoctorManage,
@@ -25,4 +28,5 @@ export {
   getInfoDoctorService,
   saveScheduleDoctor,
   getAllSchedule,
+  sentBookingService,
 };

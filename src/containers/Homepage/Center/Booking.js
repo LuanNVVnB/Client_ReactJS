@@ -5,6 +5,8 @@ import "./CenterFind.scss";
 import { FormattedMessage } from "react-intl";
 import * as actions from "../../../store/actions";
 import { Button } from "react-bootstrap";
+import { sentBookingService } from "../../../services/doctorService";
+import { toast } from "react-toastify";
 
 export class Booking extends Component {
   constructor(props) {
@@ -35,6 +37,15 @@ export class Booking extends Component {
       });
     }
   }
+  handleOnlickBooking = async () => {
+    let data = await sentBookingService(this.state.email);
+    if (data.errcode === 0) {
+      toast.success("success booking");
+    } else {
+      toast.success("fail");
+    }
+  };
+
   render() {
     let { doctorBook, clientInfo } = this.props;
     let { fullName, email, date, time, phoneNumber, address } = this.state;
@@ -113,6 +124,9 @@ export class Booking extends Component {
                   margin: "10px 1% 10px 17%",
                 }}
                 variant="outline-info"
+                onClick={() => {
+                  this.handleOnlickBooking();
+                }}
               >
                 Submit
               </Button>
