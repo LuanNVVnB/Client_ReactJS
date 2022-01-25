@@ -6,7 +6,9 @@ import "./DoctorDetail.scss";
 export class DoctorDetail extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+  
+    };
   }
   componentDidMount() {}
 

@@ -20,7 +20,9 @@ export const fetchGenderStart = () => {
   return async (dispatch) => {
     try {
       //dispatch api for reducer
+
       dispatch({ type: actionTypes.FETCH_GENDER_START });
+      console.log("dispatch:", dispatch);
       let res = await getAllcodeService("GENDER");
 
       if (res && res.errcode === 0) {
